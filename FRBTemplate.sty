@@ -24,12 +24,12 @@
 \RequirePackage{setspace}
 \linespread{1.8} 	% 1.8 / 1.2 = 1.5 倍行距（行间距 * 1.2 = 实际行间距）
 \setlength{\parskip}{0.5\baselineskip}		% 段落间距设置为当前行高的一半
-\newcommand{\setParDis}{\setlength{\parskip}{0.5\baselineskip}}		% 使用 \setParDis 将后面段落设为 0 间距
-\newcommand{\setParDef}{\setlength{\parskip}{0pt}}					% 使用 \setParDef 将后面段落设为默认间距
+\newcommand{\setParDis}{\setlength{\parskip}{0pt}}		        % 使用 \setParDis 将后面段落设为 0 间距
+\newcommand{\setParDef}{\setlength{\parskip}{0.5\baselineskip}}	% 使用 \setParDef 将后面段落设为默认间距
 
 
 %左右缩进
-\RequirePackage{changepage} 
+\RequirePackage{changepage}
 
 
 % 页眉页脚
@@ -37,7 +37,7 @@
 \pagestyle{plain}
 \setlength{\headwidth}{\textwidth}	% 页眉长度适应文本
 \lhead{}	% 清除左页眉
-\rhead{}
+\rhead{}    % 清除右页眉
 
 
 % ===============页面格式===============
@@ -47,7 +47,7 @@
 % ===============字体===============
 \RequirePackage{fontspec}
 \setmainfont[													% 西文字体 Times New Roman
-	Path				= fonts/, 
+Path				= fonts/,
 	BoldFont 			= times-new-roman-bold.ttf,
 	ItalicFont 		= times-new-roman-italic.ttf,
 	BoldItalicFont 	= times-new-roman-bold-italic.ttf
@@ -56,7 +56,7 @@
 \setCJKfamilyfont{hwzs}[Path=fonts/]{STKzhongsong.ttf}	% 华文中宋
 \newcommand{\zhongsong}{\CJKfamily{hwzs}}
 \setCJKfamilyfont{hwxw}[Path=fonts/]{STKxinwei.ttf}		% 华文新魏
-\newcommand{\xinwei}{\CJKfamily{hwxw}}              		
+\newcommand{\xinwei}{\CJKfamily{hwxw}}
 
 % ===============字体===============
 
@@ -73,7 +73,7 @@
 
 % ===============代码===============
 % 普通代码
-\RequirePackage{listings} 
+\RequirePackage{listings}
 
 % Python 代码样式
 \definecolor{dkgreen}{rgb}{0,0.6,0}	% 需要 xcolor
@@ -123,7 +123,7 @@
 \renewcommand{\lstlistingname}{代码}
 \renewcommand{\algorithmcfname}{算法}
 
-\renewcommand{\algorithmicrequire}{\textbf{Input:}} 
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 % ===============代码===============
 
@@ -150,13 +150,34 @@
 
 % ===============Tikz===============
 \RequirePackage{tikz,pgfplots}
+\pgfplotsset{compat=1.7}
+    % 处理 running in backwards compatibility mode (unsuitable tick labels;
+    % missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
+    % 警告
 \usetikzlibrary{patterns}
 \usetikzlibrary{graphs, positioning, quotes, shapes.geometric,shapes.misc}
 % ===============Tikz===============
 
 % ===============目录===============
+\setcounter{secnumdepth}{3}		%编号深度
+\setcounter{tocdepth}{3}		%目录深度
+
 \renewcommand\listfigurename{插图目录}
 \renewcommand\listtablename{表格目录}
+
+% 目录加.引导符
+\usepackage{titletoc} %设置
+\titlecontents{section}[1.6em]{\addvspace{2pt}\filright}
+{\contentspush{\thecontentslabel\hspace{0.8em}}}
+{}{\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsection}[3.2em]{\addvspace{2pt}\filright}
+{\contentspush{\thecontentslabel\hspace{0.8em}}}
+{}{\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsubsection}[6.4em]{\addvspace{2pt}\filright}
+{\contentspush{\thecontentslabel\hspace{0.8em}}}
+{}{\titlerule*[8pt]{.}\contentspage}
 % ===============目录===============
 
 
