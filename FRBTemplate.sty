@@ -1,0 +1,174 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{FRBTemplate}[2024/4/8 FRB Template Package]
+
+\ProcessOptions\relax
+
+% ===============基本宏包===============
+\RequirePackage{xeCJK}		% 中文支持
+%\RequirePackage{ctex}
+\RequirePackage{amssymb,amsmath}	% 提供数学符号等支持
+\RequirePackage{color,xcolor}		% 提供颜色支持
+\RequirePackage[bookmarks=true, colorlinks,allcolors=black]{hyperref} % 提供超链接，交叉引用和目录的跳转
+% ===============基本宏包===============
+
+
+
+% ===============页面格式===============
+\RequirePackage{multicol}	% 分栏
+\RequirePackage{geometry}
+\geometry{a4paper}
+\geometry{left=3cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+
+% 行距
+\RequirePackage{setspace}
+\linespread{1.8} 	% 1.8 / 1.2 = 1.5 倍行距（行间距 * 1.2 = 实际行间距）
+\setlength{\parskip}{0.5\baselineskip}		% 段落间距设置为当前行高的一半
+\newcommand{\setParDis}{\setlength{\parskip}{0.5\baselineskip}}		% 使用 \setParDis 将后面段落设为 0 间距
+\newcommand{\setParDef}{\setlength{\parskip}{0pt}}					% 使用 \setParDef 将后面段落设为默认间距
+
+
+%左右缩进
+\RequirePackage{changepage} 
+
+
+% 页眉页脚
+\RequirePackage{fancyhdr} %页眉页脚
+\pagestyle{plain}
+\setlength{\headwidth}{\textwidth}	% 页眉长度适应文本
+\lhead{}	% 清除左页眉
+\rhead{}
+
+
+% ===============页面格式===============
+
+
+
+% ===============字体===============
+\RequirePackage{fontspec}
+\setmainfont[													% 西文字体 Times New Roman
+	Path				= fonts/, 
+	BoldFont 			= times-new-roman-bold.ttf,
+	ItalicFont 		= times-new-roman-italic.ttf,
+	BoldItalicFont 	= times-new-roman-bold-italic.ttf
+]{times-new-roman.ttf}
+\setmonofont[Path=fonts/]{Courier New.ttf}					% 等宽字体 Courier New
+\setCJKfamilyfont{hwzs}[Path=fonts/]{STKzhongsong.ttf}	% 华文中宋
+\newcommand{\zhongsong}{\CJKfamily{hwzs}}
+\setCJKfamilyfont{hwxw}[Path=fonts/]{STKxinwei.ttf}		% 华文新魏
+\newcommand{\xinwei}{\CJKfamily{hwxw}}              		
+
+% ===============字体===============
+
+
+
+
+% ===============内容强调===============
+\RequirePackage{soul}	% so（字母间隔）, caps（全大写）, ul（下划线）, hl（高亮）, st（删除线）
+	% 可设置 ul，hl，st 颜色：setulcolor{}, sethlcolor{}以及setstcolor{}
+% ===============内容强调===============
+
+
+
+
+% ===============代码===============
+% 普通代码
+\RequirePackage{listings} 
+
+% Python 代码样式
+\definecolor{dkgreen}{rgb}{0,0.6,0}	% 需要 xcolor
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+	language=Python,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,	%设置行号位置none不显示行号
+	%numberstyle=\tiny\courier, 	%设置行号大小
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	escapeinside=``,	%逃逸字符显示中文
+	tabsize=4,
+	extendedchars=false 	%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+}
+
+
+%防止伪代码与已有包冲突
+\makeatletter
+\newif\if@restonecol
+\makeatother
+\let\algorithm\relax
+\let\endalgorithm\relax
+% 伪代码
+\RequirePackage[ruled,linesnumbered]{algorithm2e}
+	% ruled：标题显示在上面。
+	% linesnumbered：显示行号。
+	% boxed：算法放入盒子。
+\RequirePackage{algpseudocode}	%伪代码注释
+
+% 定义 Do-While
+\SetKwRepeat{Do}{do}{while}
+% 调用方式 \Do{<结束条件>}{<执行命令>}
+
+
+% 代码块标题
+\renewcommand{\lstlistlistingname}{代码汇总}
+\renewcommand{\lstlistingname}{代码}
+\renewcommand{\algorithmcfname}{算法}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} 
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+% ===============代码===============
+
+
+
+% ===============图表===============
+\RequirePackage{float}		% 浮动体支持
+\RequirePackage{caption}		% 标题
+\RequirePackage{subcaption}	% 子标题
+\DeclareCaptionLabelSeparator{mysep}{\space\space}  	%自定义caption格式
+\captionsetup[figure]{font={small}, labelfont=bf, labelsep=mysep, textfont={bf}}   	%图片caption格式
+\captionsetup[table]{font={small}, labelfont=bf, labelsep=mysep, textfont={bf}}   %表格caption格式
+
+
+\RequirePackage{graphicx}		% 插入图片
+
+
+% 表格
+\RequirePackage{multirow}		% 合并单元格
+\RequirePackage{booktabs}		% 三线表支持
+
+
+
+
+% ===============Tikz===============
+\RequirePackage{tikz,pgfplots}
+\usetikzlibrary{patterns}
+\usetikzlibrary{graphs, positioning, quotes, shapes.geometric,shapes.misc}
+% ===============Tikz===============
+
+% ===============目录===============
+\renewcommand\listfigurename{插图目录}
+\renewcommand\listtablename{表格目录}
+% ===============目录===============
+
+
+
+% ===============其他定义===============
+\graphicspath{{image/}}	% 图片路径
+
+
+
+
+
+\endinput
+
+% 2024/4/7
+% 北航人苦论文格式久矣，苦不见拉泰赫模板久矣。吾立志撰拉泰赫宏，不苦他人，当苦自己。望该包广而传之，用而赞之，吾无悔矣！
