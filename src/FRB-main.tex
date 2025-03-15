@@ -115,6 +115,8 @@
 
 
 %====================正文====================
+\begin{spacing}{1.5}
+	
 \renewcommand{\headrulewidth}{0.4pt} % 恢复页眉装饰线
 %\lhead{} 
 \chead{\xiaowu 北京航空航天大学第三十四届“冯如杯”竞赛创意赛道参赛作品} %设置居中页眉
@@ -126,7 +128,7 @@
 \setcounter{page}{1} 
 \section{引言}
 \setParDis %设置段间距为 0
-\begin{spacing}{1.5}
+
 	\subsection{显微镜技术的历史与发展}
 	\subsubsection[光学显微镜]{光学显微镜}
 	光学显微镜的发展始于 16 世纪末，当时人们开始尝试使用透镜放大小物体。这一时期的镜片制作技术为后来的各式显微镜的出现奠定了基础。	
@@ -1577,7 +1579,9 @@
 	
 	鉴于此，未来的工作可以集中在改进自制 STM 的设计、提高其性能和用户体验上。例如，通过采用更先进的材料和制造技术，可以提高 STM 的结构稳定性和测量精度。同时，开发更加直观易用的用户界面和软件工具，可以降低操作难度，使 STM 更加适合非专业用户使用。另外通过社区合作和开源共享，可以集合更多人的智慧，共同推动自制 STM 技术的发展和完善。
 	
-	
+
+
+%\end{spacing}
 %====================正文====================
 	
 	
@@ -1587,9 +1591,8 @@
 \section*{参考文献} % section*生成无标号章节题目
 \setParDis %设置段间距为 0
 \addcontentsline{toc}{section}{参考文献} % 将无标号章节添加至目录
-\begingroup  % 去掉thebibliography环境自带的“参考文献”标题
-\renewcommand{\section}[2]{} 
-\begin
+\renewcommand{\section}[2]{}
+%\bibliography{FRB-ref}
 \begin{thebibliography}{25}
 	\bibitem{ref1} 庞宗强.组合扫描探针显微镜系统研制[D].合肥:中国科学技术大学,2010.
 	
@@ -1633,7 +1636,7 @@
 	
 	
 \end{thebibliography}
-\endgroup
+\end{spacing}
 %====================参考文献====================
 
 
@@ -1953,4 +1956,6 @@
 	
 	
 \end{document}
+
+
 % You have reached the end of world.
