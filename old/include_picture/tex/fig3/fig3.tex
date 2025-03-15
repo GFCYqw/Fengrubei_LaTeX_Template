@@ -1,0 +1,65 @@
+\documentclass[tikz,border=2pt]{standalone} 
+
+\usepackage{ctex}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{patterns}
+\usetikzlibrary{graphs, positioning, quotes, shapes.geometric,shapes.misc}
+
+
+\begin{document} 
+
+
+
+
+	\begin{tikzpicture}[node distance=15pt, thick]
+		\coordinate (start) at (0, 0);
+		\node[draw, right=30pt of start, circle,text width=1pt] (circ1)  {};
+		\node[draw, right=31.3pt of start, cross out,text width=0.9pt] {};
+		\node at (0.55,0)[above]  {r(t)};
+		\node at (1.95,0)[above]  {e(t)};
+		
+		\node [above=-0.09cm of circ1]  {+};
+		\node [below left=-0.08cm of circ1]  {\Large -};
+		
+		\coordinate (dot1) at (2.5, 0);
+		
+		\node[draw, right=of dot1	] 	               (I)  	{积分};
+		\node[draw, above=of I]                        (P)  	{比例};
+		\node[draw, below=of I]                        (D)  	{微分};
+		
+		\node[draw, right=16.3pt of I, cross out,text width=0.9pt] {};
+		\node[draw, right=of I, circle,text width=1pt] (circ2)  {};
+		\node[above left=-0.15cm of circ2]{+};
+		\node[below left=-0.15cm of circ2]{+};
+		\node at(5.35,0)[above]{u(t)};
+		
+		\node[draw,right=25pt of circ2](do){执行机构};
+		
+		\node[draw,right=of do](target){对象};
+		
+		\coordinate (dot2) at (9.7, 0);
+		\coordinate (dot22) at (10.3, 0);
+		\node at (9.7,0)[above]{c(t)};
+		
+		\coordinate (dot3) at (3,-2);
+		
+		%					\node[draw, below=of step 1]                        (step 2)  {Step 2};
+		%					\node[draw, diamond, aspect=2, below=of step 2]     (choice)  {Choice};
+		%					\node[draw, right=30pt of choice]                   (step x)  {Step X};
+		%					\node[draw, rounded corners, below=20pt of choice]  (end)     {End};
+		
+		\graph{
+			(start)->(circ1)--(dot1)->[to path={|- (\tikztotarget)}](P)->[to path={-| (\tikztotarget)}](circ2);
+			(dot1)->(I)->(circ2);
+			(dot1)->[to path={|- (\tikztotarget)}](D)->[to path={-|(\tikztotarget)}](circ2);
+			(circ2)->(do)->(target)--(dot2)->(dot22);
+			(dot2)--[to path={|- (\tikztotarget)}](dot3)->[to path={-| (\tikztotarget)}](circ1);
+			%						(start) -> (circ1) -> (P) -> (choice) ->["Yes"left] (end);
+			%						(choice) ->["No"] (step x) ->[to path={|- (\tikztotarget)}] (step 2);
+		};
+		
+		
+	\end{tikzpicture}
+
+
+\end{document}

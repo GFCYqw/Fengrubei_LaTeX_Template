@@ -1,0 +1,108 @@
+\section{公式和中文字体\ \ 和谐共处}
+
+公式和中文字体和谐共处。
+
+\subsection{LaTeX公式}
+
+%********************正文部分********************
+\begin{align*}
+S=\iint\limits_{\Sigma}1 \ ds &= \int_0^{\pi}d\theta \int_0^{2\pi} r^2sin(\theta) d\phi \\
+&= \int_0^{\pi}d\theta \int_0^{2\pi}\sin (\theta ) \left(\frac{1}{5} \sin (\theta  m) \sin (n \phi )+1\right)^2d\phi\\
+&=\frac{4 \sin (\pi  m) \sin ^2(\pi  n)}{5 n-5 m^2 n}-\frac{\left(8 m^2+\cos (2 \pi  m)-1\right) \sin (4 \pi  n)}{200 \left(4 m^2-1\right) n}+\frac{\pi  \left(8 m^2+\cos (2 \pi  m)-1\right)}{50 \left(4 m^2-1\right)}+4 \pi\\
+&=  \left(\frac{8 m^2}{50 \left(4 m^2-1\right)}+4\right)\pi
+\end{align*}
+%********************正文部分*******************
+
+\subsection{中文字体设置}
+
+默认就是宋体。
+
+调用加粗宋体：\textbf{黑体写在这里}
+
+调用楷体：\textit{楷体写在这里}
+
+调用仿宋：\textsl{仿宋写在这里}
+
+调用黑体：\heiti{黑体写在这里}
+
+\subsection{对齐方式}
+
+
+%********************排版部分********************
+\begin{center} 
+居中文本第一行\\
+居中文本第二行\\
+\end{center}
+
+\begin{flushright}
+右对齐第一行\\
+右对齐第二行\\
+\end{flushright}
+
+%********************排版部分********************
+
+
+\section{图片与TeX子文件\ \ 信手拈来}
+
+图片与TeX子文件信手拈来。
+
+\subsection{图片}
+
+%********************图片部分********************
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{include_picture/picture.jpg}
+    \caption{插入图片}
+\end{figure}
+%********************图片部分********************
+
+\subsection{引用Tex子文件}
+
+
+%********************引用Tex子文件部分********************
+\input{include_tex/include_text} %使用input不分页
+%\include{includetex} %使用include将分页
+%********************引用Tex子文件部分********************
+
+
+%\titleformat*{\subsubsection}{\scshape\MakeLowercase}
+
+
+\clearpage
+\section{表格\ \ 提升逼格}
+
+搞科研怎么能没有表格？\\
+
+\subsection{表格}
+
+%********************表格部分********************
+关于表格的各种样式，请使用Google大法。\\
+\begin{table}[H]
+\caption{设置表格总长} 
+\begin{tabular*}{12cm}{lll}
+\hline  
+Start & End  & Character Block Name \\  
+\hline  
+3400  & 4DB5 & CJK Unified Ideographs Extension A \\  
+4E00  & 9FFF & CJK Unified Ideographs \\  
+\hline  
+\end{tabular*} 
+\end{table} 
+%********************表格部分********************
+
+
+%********************代码部分********************
+
+\section{代码片\ \ 程序员的最爱}
+代码片永远是程序员的最爱，支持语法高亮，用法不妨Google。\\
+\lstset{language=C}
+\begin{lstlisting}
+#include<iostream>
+using namespace std;
+int main()
+{
+    return 0;
+}
+\end{lstlisting}
+
+%********************代码部分********************
