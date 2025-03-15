@@ -1,8 +1,6 @@
-%\special{dvipdfmx:config z 0} 
-% 取消PDF压缩，加快速度但会极大增加文件体积，最终版本生成的时候最好把这句话注释掉
-
-% 本文档以 第三十四届“冯如杯”格式规范编写，请根据当年届次要求自行修改
-% 例如搜索替换 “三十四届”->“三十五届”；“创意赛道”->“主赛道”
+% \special{dvipdfmx:config z 0} % 取消PDF压缩，加快速度但会极大增加文件体积，最终版本生成的时候最好把这句话注释掉
+% 文档可能需要多次编译以正确生成交叉引用和目录
+% 本文档以 第三十四届“冯如杯”格式规范编写，请根据当年届次要求自行修改。例如搜索替换 “三十四届”->“三十五届”；“创意赛道”->“主赛道”
 
 \documentclass{article}
 \usepackage{FRB-style}
@@ -28,7 +26,7 @@
 		\zhongsong
 		一种基于三维压电滑台的\\低成本自制扫描隧道显微镜设计方案
 	\end{center}
-    \rightline{\xinwei\sanhao{——副标题}} % 副标题三号华文新魏居右
+%    \rightline{\xinwei\sanhao{——副标题}} % 副标题三号华文新魏居右
 \end{spacing}
 
 % ！！！注意千万不能加作者学院等信息
@@ -42,6 +40,7 @@
 \renewcommand{\headrulewidth}{0pt}	% 没有页眉装饰线
 \clearpage
 \pagenumbering{roman}	% 摘要目录页小写罗马
+
 
 \xiaosi
 \section*{摘要}
@@ -1579,22 +1578,19 @@
 	鉴于此，未来的工作可以集中在改进自制 STM 的设计、提高其性能和用户体验上。例如，通过采用更先进的材料和制造技术，可以提高 STM 的结构稳定性和测量精度。同时，开发更加直观易用的用户界面和软件工具，可以降低操作难度，使 STM 更加适合非专业用户使用。另外通过社区合作和开源共享，可以集合更多人的智慧，共同推动自制 STM 技术的发展和完善。
 	
 	
+%====================正文====================
 	
 	
-	
-	
-\end{spacing}
-
-
-
+%====================参考文献====================
 \newpage
 \phantomsection
 \section*{参考文献} % section*生成无标号章节题目
+\setParDis %设置段间距为 0
 \addcontentsline{toc}{section}{参考文献} % 将无标号章节添加至目录
 \begingroup  % 去掉thebibliography环境自带的“参考文献”标题
 \renewcommand{\section}[2]{} 
+\begin
 \begin{thebibliography}{25}
-	
 	\bibitem{ref1} 庞宗强.组合扫描探针显微镜系统研制[D].合肥:中国科学技术大学,2010.
 	
 	\bibitem{ref2} 陆轻铀.新型强力压电马达及其在恶劣条件下原子成像中的应用[J].物理, 2017,3:168-177.
@@ -1638,7 +1634,10 @@
 	
 \end{thebibliography}
 \endgroup
+%====================参考文献====================
 
+
+%====================附录====================
 \newpage
 \appendix
 %\setcounter{figure}{0}
@@ -1950,6 +1949,8 @@
 	# 显示图形
 	plt.show()
 \end{lstlisting}
-
+%====================附录====================
+	
 	
 \end{document}
+% You have reached the end of world.
