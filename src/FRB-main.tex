@@ -2,6 +2,7 @@
 % 取消PDF压缩，加快速度但会极大增加文件体积，最终版本生成的时候最好把这句话注释掉
 
 % 本文档以 第三十四届“冯如杯”格式规范编写，请根据当年届次要求自行修改
+% 例如搜索替换 “三十四届”->“三十五届”；“创意赛道”->“主赛道”
 
 \documentclass{article}
 \usepackage{FRB-style}
@@ -32,15 +33,15 @@
 
 % ！！！注意千万不能加作者学院等信息
 
-\pagenumbering{gobble} %封面无页码
+\pagenumbering{gobble} % 封面无页码
 %\thispagestyle{empty}
 %====================封面====================
 
 
 %====================摘要====================
-\renewcommand{\headrulewidth}{0pt}%没有页眉装饰线
+\renewcommand{\headrulewidth}{0pt}	% 没有页眉装饰线
 \clearpage
-\pagenumbering{roman} %摘要目录页小写罗马
+\pagenumbering{roman}	% 摘要目录页小写罗马
 
 \xiaosi
 \section*{摘要}
@@ -55,7 +56,6 @@
 	此外，我们还探讨了自制STM在纳米科学、新材料开发、表面科学研究以及教育领域的广泛应用前景。在市场需求与商业化方面，我们分析了自制 STM 相对于市场上现有产品的竞争优势，并讨论了如何通过与工业界的合作，将这一技术转化为具有商业价值的产品。
 	
 	最后，我们对自制 STM 的优劣进行了分析，并提出了未来优化的方向，包括提高系统的稳定性和可靠性，以及开发更加直观易用的用户界面。通过开源与社区合作，我们相信自制 STM 项目能够激发更广泛的科学兴趣，促进科学知识的传播和技术的创新。
-	
 	
 \end{spacing}
 
@@ -88,28 +88,30 @@
 \phantomsection
 \clearpage
 %\addcontentsline{toc}{section}{目录}
-\tableofcontents
-
-\clearpage
-% 插图目录
-{%
-	\let\oldnumberline\numberline%
-	\renewcommand{\numberline}{\figurename~\oldnumberline}%
-	\phantomsection
-	%	\addcontentsline{toc}{section}{插图目录}
-	\listoffigures%
-}
-
-\clearpage
-% 表格目录
-{%
-	\let\oldnumberline\numberline%
-	\renewcommand{\numberline}{\tablename~\oldnumberline}%
-	\phantomsection
-	%	\addcontentsline{toc}{section}{表格目录}
-	\listoftables
-}
-
+\begin{spacing}{1.5}
+	% 目录
+	\tableofcontents
+	
+	\clearpage
+	% 插图目录
+	{%
+		\let\oldnumberline\numberline%
+		\renewcommand{\numberline}{\figurename~\oldnumberline}%
+		\phantomsection
+		%	\addcontentsline{toc}{section}{插图目录}
+		\listoffigures%
+	}
+	
+%	\clearpage
+	% 表格目录
+	{%
+		\let\oldnumberline\numberline%
+		\renewcommand{\numberline}{\tablename~\oldnumberline}%
+		\phantomsection
+		%	\addcontentsline{toc}{section}{表格目录}
+		\listoftables
+	}
+\end{spacing}
 %====================目录====================
 
 
