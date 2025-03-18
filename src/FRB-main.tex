@@ -628,26 +628,26 @@
 \section{自制 STM 的设计方案}
 %	\setParDis %设置段间距为 0
 	\subsection{基本组成}
-	\begin{figure}[htbp]
-		\centering 
-		\includegraphics[width=0.8\textwidth]{fig88.png}
-		\caption{DIY-STM 设计示意图}
-	\end{figure}	
-	
-	在本设计方案中，STM 将由如下三大部分组成：
-	
-	\begin{itemize}
-		\item \textbf{机械结构}\par
-		\qquad 包括基座、扫描头、样品台、压电滑台、悬挂减震平台、亚克力罩。
+		\begin{figure}[htbp]
+			\centering 
+			\includegraphics[width=0.8\textwidth]{fig88.png}
+			\caption{DIY-STM 设计示意图}
+		\end{figure}	
 		
-		\item \textbf{电子电路}\par
-		\qquad 包括电源模块、压电滑台驱动模块（DAC$\times$3）、扫描头驱动模块（DAC$\times$4）、ADC \& MCU 模块、转接板和前置放大器。
+		在本设计方案中，STM 将由如下三大部分组成：
 		
-		
-		\item \textbf{控制软件}\par
-		\qquad 包括使用 C 语言编写的 STM32F103C8T6 固件程序、使用 Python 编写的 PID 反馈系统、数据处理与硬件控制程序、使用 PyQt 制作的 GUI 界面。
-		
-	\end{itemize}
+		\begin{itemize}
+			\item \textbf{机械结构}\par
+			\qquad 包括基座、扫描头、样品台、压电滑台、悬挂减震平台、亚克力罩。
+			
+			\item \textbf{电子电路}\par
+			\qquad 包括电源模块、压电滑台驱动模块（DAC$\times$3）、扫描头驱动模块（DAC$\times$4）、ADC \& MCU 模块、转接板和前置放大器。
+			
+			
+			\item \textbf{控制软件}\par
+			\qquad 包括使用 C 语言编写的 STM32F103C8T6 固件程序、使用 Python 编写的 PID 反馈系统、数据处理与硬件控制程序、使用 PyQt 制作的 GUI 界面。
+			
+		\end{itemize}
 	
 	
 	
@@ -657,75 +657,75 @@
 	
 	
 	\subsection{机械结构}
-	机械结构的设计关键在于确保探针能够在 XYZ 三个方向上进行稳定且精确的纳米级移动。设计中应主要考虑以下三个方面：
-	\begin{enumerate}
-		\item \textbf{稳定性}：机械结构必须足够稳定，以维持探针与样品之间的微弱隧穿电流。
-		\item \textbf{精确性}：通过精密的机械设计和压电陶瓷控制，实现探针的精确定位。
-		\item \textbf{便携性}：机械结构应当尽量小巧、简单且便于拆卸与组装。
-	\end{enumerate}
-	
-	在考虑稳定性与设计紧凑性后，我们决定采用如图 \ref{fig7} 所示的模块化卧式结构。在该种结构中，扫描头与样品在同一条水平线上，可利用压电滑台和扫描头分别控制控制样品平台和探针的位置。前置放大器放置于扫描头正下方凹槽内，利用金属包被屏蔽市电干扰。基座外侧（图 \ref{fig18}）固定一块线路转接板提供线路的集成与转接工作。该设计空间利用率较高、功能全面、稳定性较好，同时模块化的设计提供了足够的便携性与可维护性，部分模块（压电滑台等）可应用于其他领域。
-	\begin{figure}[!h]
-		\centering
-		\begin{subfigure}{0.8\textwidth}
+		机械结构的设计关键在于确保探针能够在 XYZ 三个方向上进行稳定且精确的纳米级移动。设计中应主要考虑以下三个方面：
+		\begin{enumerate}
+			\item \textbf{稳定性}：机械结构必须足够稳定，以维持探针与样品之间的微弱隧穿电流。
+			\item \textbf{精确性}：通过精密的机械设计和压电陶瓷控制，实现探针的精确定位。
+			\item \textbf{便携性}：机械结构应当尽量小巧、简单且便于拆卸与组装。
+		\end{enumerate}
+		
+		在考虑稳定性与设计紧凑性后，我们决定采用如图 \ref{fig7} 所示的模块化卧式结构。在该种结构中，扫描头与样品在同一条水平线上，可利用压电滑台和扫描头分别控制控制样品平台和探针的位置。前置放大器放置于扫描头正下方凹槽内，利用金属包被屏蔽市电干扰。基座外侧（图 \ref{fig18}）固定一块线路转接板提供线路的集成与转接工作。该设计空间利用率较高、功能全面、稳定性较好，同时模块化的设计提供了足够的便携性与可维护性，部分模块（压电滑台等）可应用于其他领域。
+		\begin{figure}[!h]
 			\centering
-			\begin{tikzpicture}
-				\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{fig9.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%						\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%						\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%						\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-					% 作图命令
-					\draw[black,ultra thick] (0.25,0.8)--(0.35,0.9)--(0.6,0.9);
-					\node at(0.48,0.9)[above]{扫描头固定件};
-					
-					\draw[black,ultra thick,shift={(0.1,-0.1)}] (0.25,0.8)--(0.35,0.9)--(0.55,0.9);
-					\node at(0.48,0.9)[above,shift={(0.1,-0.1)}]{压电陶瓷片};
-					
-					\draw[black,ultra thick] (0.25,0.3)--(0.15,0.4)--(0.03,0.4);
-					\node at(0.09,0.4)[above]{TIA 盖板};
-					
-					\draw[black,ultra thick] (0.61,0.51)--(0.5,0.58)--(0.35,0.58);
-					\node at(0.42,0.58)[above]{MMCX 座};
-					
-					\draw[black,ultra thick] (0.9,0.65)--(0.8,0.6)--(0.65,0.6);
-					\node at(0.7,0.6)[above]{样品台};
-					
-					\draw[black,ultra thick,shift={(0,-0.35)}] (0.9,0.65)--(0.8,0.6)--(0.65,0.6);
-					\node at(0.62,0.6)[above,shift={(0.1,-0.35)}]{压电滑台};
-					
-					\draw[black,ultra thick,shift={(-0.4,-0.5)}] (0.9,0.65)--(0.8,0.6)--(0.68,0.6);
-					\node at(0.62,0.6)[above,shift={(-0.3,-0.5)}]{基座};
-					
-					\draw [red,rounded corners,thick](0.65,0.42)rectangle(0.71,0.5);
-					\draw[black,ultra thick] (0.652,0.424)--(0.55,0.34)--(0.44,0.34);
-					\node at(0.47,0.34)[above]{探针};
-					
-				\end{scope}
-			\end{tikzpicture}\\
-			\caption{机械结构示意图（正）}
-		\end{subfigure}
+			\begin{subfigure}{0.8\textwidth}
+				\centering
+				\begin{tikzpicture}
+					\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{fig9.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%						\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%						\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%						\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						% 作图命令
+						\draw[black,ultra thick] (0.25,0.8)--(0.35,0.9)--(0.6,0.9);
+						\node at(0.48,0.9)[above]{扫描头固定件};
+						
+						\draw[black,ultra thick,shift={(0.1,-0.1)}] (0.25,0.8)--(0.35,0.9)--(0.55,0.9);
+						\node at(0.48,0.9)[above,shift={(0.1,-0.1)}]{压电陶瓷片};
+						
+						\draw[black,ultra thick] (0.25,0.3)--(0.15,0.4)--(0.03,0.4);
+						\node at(0.09,0.4)[above]{TIA 盖板};
+						
+						\draw[black,ultra thick] (0.61,0.51)--(0.5,0.58)--(0.35,0.58);
+						\node at(0.42,0.58)[above]{MMCX 座};
+						
+						\draw[black,ultra thick] (0.9,0.65)--(0.8,0.6)--(0.65,0.6);
+						\node at(0.7,0.6)[above]{样品台};
+						
+						\draw[black,ultra thick,shift={(0,-0.35)}] (0.9,0.65)--(0.8,0.6)--(0.65,0.6);
+						\node at(0.62,0.6)[above,shift={(0.1,-0.35)}]{压电滑台};
+						
+						\draw[black,ultra thick,shift={(-0.4,-0.5)}] (0.9,0.65)--(0.8,0.6)--(0.68,0.6);
+						\node at(0.62,0.6)[above,shift={(-0.3,-0.5)}]{基座};
+						
+						\draw [red,rounded corners,thick](0.65,0.42)rectangle(0.71,0.5);
+						\draw[black,ultra thick] (0.652,0.424)--(0.55,0.34)--(0.44,0.34);
+						\node at(0.47,0.34)[above]{探针};
+						
+					\end{scope}
+				\end{tikzpicture}\\
+				\caption{机械结构示意图（正）}
+			\end{subfigure}
+			\vskip 1em
+			\begin{subfigure}{0.8\textwidth}
+				\centering
+				\begin{tikzpicture}
+					\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{fig10.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%						\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%						\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%						\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						% 作图命令
+					\end{scope}
+				\end{tikzpicture}
+				\caption{机械结构示意图（反）}
+				\label{fig18}
+			\end{subfigure}
+			\caption{DIY-STM 机械结构示意图}
+			\label{fig7}
+		\end{figure}
 		\vskip 1em
-		\begin{subfigure}{0.8\textwidth}
-			\centering
-			\begin{tikzpicture}
-				\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{fig10.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%						\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%						\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%						\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-					% 作图命令
-				\end{scope}
-			\end{tikzpicture}
-			\caption{机械结构示意图（反）}
-			\label{fig18}
-		\end{subfigure}
-		\caption{DIY-STM 机械结构示意图}
-		\label{fig7}
-	\end{figure}
-	\vskip 1em
 	
 	
 	
@@ -733,195 +733,171 @@
 	
 	
 	\subsubsection{扫描头的设计原理}
-	本扫描头设计以 John Alexander 的“单侧变形盘状扫描头”\cite{ref13}为基础，参照 Open STM 项目\cite{ref17}进行进一步优化。如图 \ref{fig6} 所示，扫描头由四部分层叠而成，其中压电蜂鸣器是扫描头实现纳米级精细运动的关键。普通的压电蜂鸣器在施加不同电压后只能产生 Z 轴上的一维运动（如图 \ref{fig12} 所示）远不能满足 STM 探针三维移动的要求。因此我们将压电蜂鸣片上表面的银层分割为四个象限（如图 \ref{fig11} 所示），分别记为 +X、-X、+Y 和 -Y。当 +X 区域施加一个正电压，-X 区域施加一个等大的负电压时，压电蜂鸣片便会带动探针产生一个沿 X 轴方向的微小位移（如图 \ref{fig13} 所示），+Y 与 -Y 区域也是如此。由此我们便仅通过一块压电陶瓷实现了控制探针的三维移动。
-	\begin{figure}[!h]
-		\centering
-		\begin{subfigure}{0.47\textwidth}
+		本扫描头设计以 John Alexander 的“单侧变形盘状扫描头”\cite{ref13}为基础，参照 Open STM 项目\cite{ref17}进行进一步优化。如图 \ref{fig6} 所示，扫描头由四部分层叠而成，其中压电蜂鸣器是扫描头实现纳米级精细运动的关键。普通的压电蜂鸣器在施加不同电压后只能产生 Z 轴上的一维运动（如图 \ref{fig12} 所示）远不能满足 STM 探针三维移动的要求。因此我们将压电蜂鸣片上表面的银层分割为四个象限（如图 \ref{fig11} 所示），分别记为 +X、-X、+Y 和 -Y。当 +X 区域施加一个正电压，-X 区域施加一个等大的负电压时，压电蜂鸣片便会带动探针产生一个沿 X 轴方向的微小位移（如图 \ref{fig13} 所示），+Y 与 -Y 区域也是如此。由此我们便仅通过一块压电陶瓷实现了控制探针的三维移动。
+		\begin{figure}[!h]
 			\centering
-			\begin{tikzpicture}
-				\node[anchor=south west,inner sep=0] (image) at (0,0){
-					\includegraphics[width=\textwidth]{fig16.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+			\begin{subfigure}{0.47\textwidth}
+				\centering
+				\begin{tikzpicture}
+					\node[anchor=south west,inner sep=0] (image) at (0,0){
+						\includegraphics[width=\textwidth]{fig16.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						
+						\draw[black,ultra thick] (0.2,0.8)--(0.2,0.6);
+						\node at(0.2,0.6)[below]{压电蜂鸣片};
+						
+						\draw[black,ultra thick] (0.5,0.72)--(0.65,0.72);
+						\node at(0.65,0.72)[right]{PCB 基座};
+						
+						\draw[black,ultra thick,shift={(0,-0.2)}] (0.5,0.72)--(0.65,0.72);
+						\node at(0.65,0.72)[right,shift={(0,-0.2)}]{MMCX 座};
+						
+						\draw[black,ultra thick,shift={(0,-0.5)}] (0.5,0.72)--(0.65,0.72);
+						\node at(0.65,0.72)[right,shift={(0,-0.5)}]{探针};
+						
+						\draw[->,ultra thick,red] (0.1,0.2)--(0.2,0.2);
+						\node at(0.2,0.2)[right,red]{X};
+						
+						\draw[->,ultra thick,BlueGreen] (0.1,0.2)--(0.17,0.33);
+						\node at(0.17,0.33)[right,BlueGreen]{Y};
+						
+						\draw[->,ultra thick,blue] (0.1,0.2)--(0.1,0.05);
+						\node at(0.1,0.05)[right,blue]{Z};
+						
+					\end{scope}
+				\end{tikzpicture}
+				\caption{扫描头结构示意图}
+				\label{fig6}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.75]
+					\draw[help lines, color=white, step=1cm,ultra thin](0,0)grid(10,6);
+					\draw [fill=Dandelion,ultra thick](5,3)circle(2);
+					\draw [fill=gray!30,ultra thick](5,3)circle(1.6);
 					
-					\draw[black,ultra thick] (0.2,0.8)--(0.2,0.6);
-					\node at(0.2,0.6)[below]{压电蜂鸣片};
+					\draw[->,ultra thick,red] (0.5,0.5)--(1.5,0.5);
+					\node at(1.5,0.5)[right,red]{X};
 					
-					\draw[black,ultra thick] (0.5,0.72)--(0.65,0.72);
-					\node at(0.65,0.72)[right]{PCB 基座};
+					\draw[->,ultra thick,blue] (0.5,0.5)--(1.25,1.25);
+					\node at(1.25,1.25)[above right,blue]{Z};
 					
-					\draw[black,ultra thick,shift={(0,-0.2)}] (0.5,0.72)--(0.65,0.72);
-					\node at(0.65,0.72)[right,shift={(0,-0.2)}]{MMCX 座};
+					\draw[->,ultra thick,BlueGreen] (0.5,0.5)--(0.5,1.5);
+					\node at(0.5,1.5)[above,BlueGreen]{Y};
 					
-					\draw[black,ultra thick,shift={(0,-0.5)}] (0.5,0.72)--(0.65,0.72);
-					\node at(0.65,0.72)[right,shift={(0,-0.5)}]{探针};
+					\draw [black,ultra thick,rotate around={45:(5,3)}](3.4,3)--(6.6,3);
+					\draw [black,ultra thick,rotate around={-45:(5,3)}](3.4,3)--(6.6,3);
 					
-					\draw[->,ultra thick,red] (0.1,0.2)--(0.2,0.2);
-					\node at(0.2,0.2)[right,red]{X};
+					\draw [red,loosely dashed,very thick](2,3)--(8,3);
+					\draw [BlueGreen,loosely dashed,very thick](5,0.5)--(5,5.5);
 					
-					\draw[->,ultra thick,BlueGreen] (0.1,0.2)--(0.17,0.33);
-					\node at(0.17,0.33)[right,BlueGreen]{Y};
+					\node at(6,2.8){\textbf{+X}};
+					\node at(4,2.8){\textbf{-X}};
+					\node at(5,4){\textbf{+Y}};
+					\node at(5,2){\textbf{-Y}};
 					
-					\draw[->,ultra thick,blue] (0.1,0.2)--(0.1,0.05);
-					\node at(0.1,0.05)[right,blue]{Z};
+				\end{tikzpicture}
+				\caption{压电蜂鸣片的分割方式}
+				\label{fig11}
+			\end{subfigure}
+			\vskip 1em
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.75]
+					%						\draw[help lines, color=black!30, step=1cm,ultra thin](0,0)grid(10,6);
 					
-				\end{scope}
-			\end{tikzpicture}
-			\caption{扫描头结构示意图}
-			\label{fig6}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}[scale=0.75]
-				\draw[help lines, color=white, step=1cm,ultra thin](0,0)grid(10,6);
-				\draw [fill=Dandelion,ultra thick](5,3)circle(2);
-				\draw [fill=gray!30,ultra thick](5,3)circle(1.6);
-				
-				\draw[->,ultra thick,red] (0.5,0.5)--(1.5,0.5);
-				\node at(1.5,0.5)[right,red]{X};
-				
-				\draw[->,ultra thick,blue] (0.5,0.5)--(1.25,1.25);
-				\node at(1.25,1.25)[above right,blue]{Z};
-				
-				\draw[->,ultra thick,BlueGreen] (0.5,0.5)--(0.5,1.5);
-				\node at(0.5,1.5)[above,BlueGreen]{Y};
-				
-				\draw [black,ultra thick,rotate around={45:(5,3)}](3.4,3)--(6.6,3);
-				\draw [black,ultra thick,rotate around={-45:(5,3)}](3.4,3)--(6.6,3);
-				
-				\draw [red,loosely dashed,very thick](2,3)--(8,3);
-				\draw [BlueGreen,loosely dashed,very thick](5,0.5)--(5,5.5);
-				
-				\node at(6,2.8){\textbf{+X}};
-				\node at(4,2.8){\textbf{-X}};
-				\node at(5,4){\textbf{+Y}};
-				\node at(5,2){\textbf{-Y}};
-				
-			\end{tikzpicture}
-			\caption{压电蜂鸣片的分割方式}
-			\label{fig11}
-		\end{subfigure}
-		\vskip 1em
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}[scale=0.75]
-				%						\draw[help lines, color=black!30, step=1cm,ultra thin](0,0)grid(10,6);
-				
-				\draw[->,ultra thick,red] (0.5,1.5)--(1.5,1.5);
-				\node at(1.5,1.5)[right,red]{X};
-				\draw[->,ultra thick,BlueGreen] (0.5,1.5)--(1.25,2.25);
-				\node at(1.25,2.25)[above right,BlueGreen]{Y};
-				\draw[->,ultra thick,blue] (0.5,1.5)--(0.5,0.5);
-				\node at(0.5,0.5)[right,blue]{Z};
-				
-				
-				\draw [smooth,black,ultra thick,fill=gray!30,shift={(0,0.3)}](2,4-0.25)..controls(3,3.58)..(4,4-0.25)
-				--(4,3.7-0.25)
-				..controls(3,3.3)..(2,3.7-0.25)
-				--cycle;
-				
-				\draw [fill=Dandelion,ultra thick](2.5,2.5)rectangle(3.5,3.5);
-				\draw [fill=green!50!black!50,ultra thick](2.5,3)rectangle(3.5,3.5);
-				\draw [black,line width=4pt](3,2.5)--(3,1.7);
-				
-				
-				\draw [smooth,black,ultra thick,fill=Dandelion](1,4)..controls(3,3.5)..(5,4)
-				--(5,3.7)
-				..controls(3,3.2)..(1,3.7)
-				--cycle;
-				
-				
-				%=========================
-				\draw [smooth,black,ultra thick,fill=gray!30,shift={(-4.5,0)},rotate around={180:(7.5,4)}](2,4-0.25)..controls(3,3.58)..(4,4-0.25)
-				--(4,3.7-0.25)
-				..controls(3,3.3)..(2,3.7-0.25)
-				--cycle;
-				
-				
-				\draw [fill=Dandelion,ultra thick,shift={(4.5,0.5)}](2.5,2.5)rectangle(3.5,3.5);
-				\draw [fill=green!50!black!50,ultra thick,shift={(4.5,0.5)}](2.5,3)rectangle(3.5,3.5);
-				\draw [black,line width=4pt,shift={(4.5,0.5)}](3,2.5)--(3,1.7);
-				
-				
-				\draw [smooth,black,ultra thick,fill=Dandelion,shift={(4.5,0)}](1,4)..controls(3,4.5)..(5,4)
-				--(5,3.7)
-				..controls(3,4.2)..(1,3.7)
-				--cycle;
-				
-				%=======================
-				
-				\draw [dashed,blue,ultra thick](3,1.7)--(5.7,1.7);
-				\draw [dashed,blue,ultra thick](4.8,2.2)--(7.5,2.2);
-				\draw [<->,ultra thick,blue](5.25,1.7)--(5.25,2.2);
-				\node at(5.25,1.7)[below,blue]{$\Delta$Z};
-				
-				
-				%=======================
-				\draw [ultra thick,black,shift={(0,2.85)}](1,1)-|(0.5,0.4);
-				\draw [ultra thick,black,shift={(0,2.85)}](0.1,0.4)--(0.9,0.4);
-				\draw [ultra thick,black,shift={(0,2.85)}](0.25,0.2)--(0.75,0.2);
-				\draw [ultra thick,black,shift={(0,2.85)}](0.4,0)--(0.6,0);
-				
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.5,1)--(0.5,0.4);
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.1,0.4)--(0.9,0.4);
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.25,0.2)--(0.75,0.2);
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.4,0)--(0.6,0);
-				
-				\draw [ultra thick,black](3,3.9)--(3,5);
-				\draw [ultra thick,black](3,5.3)circle(0.3);
-				\node at(3,5.2){\Huge\textbf{-}};
-				
-				\draw [ultra thick,black](7.5,4.7)--(7.5,5);
-				\draw [ultra thick,black](7.5,5.3)circle(0.3);
-				\node at(7.5,5.28){\large\textbf{+}};
-				
-				
-			\end{tikzpicture}
-			\caption{普通压电蜂鸣片施加不同电压产生的形变}
-			\label{fig12}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}[scale=0.75]
-				%						\draw[help lines, color=black!30, step=1cm,ultra thin](0,0)grid(10,6);
-				
-				\draw[->,ultra thick,red] (0.5,1.5)--(1.5,1.5);
-				\node at(1.5,1.5)[right,red]{X};
-				\draw[->,ultra thick,BlueGreen] (0.5,1.5)--(1.25,2.25);
-				\node at(1.25,2.25)[above right,BlueGreen]{Y};
-				\draw[->,ultra thick,blue] (0.5,1.5)--(0.5,0.5);
-				\node at(0.5,0.5)[right,blue]{Z};
-				
-				
-				\draw [smooth,black,ultra thick,fill=gray!30,shift={(0,0.3)}](1.5,3.55)
-				..controls(2,3.35)and(4,4)..(4.5,3.8)
-				--(4.5,4.1)
-				..controls(4,4.3)and(2,3.65)..(1.5,3.85)
-				--cycle;
-				\draw [black,line width=6pt](3,4.3)--(3,3.9);
-				\draw [white,line width=2pt](3,4.4)--(3,3.9);
-				
-				\begin{scope}[rotate around={9.8:(3,3)},shift={(0.2,0.3)}]
+					\draw[->,ultra thick,red] (0.5,1.5)--(1.5,1.5);
+					\node at(1.5,1.5)[right,red]{X};
+					\draw[->,ultra thick,BlueGreen] (0.5,1.5)--(1.25,2.25);
+					\node at(1.25,2.25)[above right,BlueGreen]{Y};
+					\draw[->,ultra thick,blue] (0.5,1.5)--(0.5,0.5);
+					\node at(0.5,0.5)[right,blue]{Z};
+					
+					
+					\draw [smooth,black,ultra thick,fill=gray!30,shift={(0,0.3)}](2,4-0.25)..controls(3,3.58)..(4,4-0.25)
+					--(4,3.7-0.25)
+					..controls(3,3.3)..(2,3.7-0.25)
+					--cycle;
+					
 					\draw [fill=Dandelion,ultra thick](2.5,2.5)rectangle(3.5,3.5);
 					\draw [fill=green!50!black!50,ultra thick](2.5,3)rectangle(3.5,3.5);
 					\draw [black,line width=4pt](3,2.5)--(3,1.7);
-				\end{scope}
-				
-				
-				
-				\draw [smooth,black,ultra thick,fill=Dandelion](1,4)..controls(2,3.5)and(4,4.5)..(5,4)
-				--(5,3.7)
-				..controls(4,4.2)and(2,3.2)..(1,3.7)
-				--cycle;
-				
-				
-				%=========================
-				\begin{scope}[shift={(10.5,0)},xscale=-1]
+					
+					
+					\draw [smooth,black,ultra thick,fill=Dandelion](1,4)..controls(3,3.5)..(5,4)
+					--(5,3.7)
+					..controls(3,3.2)..(1,3.7)
+					--cycle;
+					
+					
+					%=========================
+					\draw [smooth,black,ultra thick,fill=gray!30,shift={(-4.5,0)},rotate around={180:(7.5,4)}](2,4-0.25)..controls(3,3.58)..(4,4-0.25)
+					--(4,3.7-0.25)
+					..controls(3,3.3)..(2,3.7-0.25)
+					--cycle;
+					
+					
+					\draw [fill=Dandelion,ultra thick,shift={(4.5,0.5)}](2.5,2.5)rectangle(3.5,3.5);
+					\draw [fill=green!50!black!50,ultra thick,shift={(4.5,0.5)}](2.5,3)rectangle(3.5,3.5);
+					\draw [black,line width=4pt,shift={(4.5,0.5)}](3,2.5)--(3,1.7);
+					
+					
+					\draw [smooth,black,ultra thick,fill=Dandelion,shift={(4.5,0)}](1,4)..controls(3,4.5)..(5,4)
+					--(5,3.7)
+					..controls(3,4.2)..(1,3.7)
+					--cycle;
+					
+					%=======================
+					
+					\draw [dashed,blue,ultra thick](3,1.7)--(5.7,1.7);
+					\draw [dashed,blue,ultra thick](4.8,2.2)--(7.5,2.2);
+					\draw [<->,ultra thick,blue](5.25,1.7)--(5.25,2.2);
+					\node at(5.25,1.7)[below,blue]{$\Delta$Z};
+					
+					
+					%=======================
+					\draw [ultra thick,black,shift={(0,2.85)}](1,1)-|(0.5,0.4);
+					\draw [ultra thick,black,shift={(0,2.85)}](0.1,0.4)--(0.9,0.4);
+					\draw [ultra thick,black,shift={(0,2.85)}](0.25,0.2)--(0.75,0.2);
+					\draw [ultra thick,black,shift={(0,2.85)}](0.4,0)--(0.6,0);
+					
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.5,1)--(0.5,0.4);
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.1,0.4)--(0.9,0.4);
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.25,0.2)--(0.75,0.2);
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.4,0)--(0.6,0);
+					
+					\draw [ultra thick,black](3,3.9)--(3,5);
+					\draw [ultra thick,black](3,5.3)circle(0.3);
+					\node at(3,5.2){\Huge\textbf{-}};
+					
+					\draw [ultra thick,black](7.5,4.7)--(7.5,5);
+					\draw [ultra thick,black](7.5,5.3)circle(0.3);
+					\node at(7.5,5.28){\large\textbf{+}};
+					
+					
+				\end{tikzpicture}
+				\caption{普通压电蜂鸣片施加不同电压产生的形变}
+				\label{fig12}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.75]
+					%						\draw[help lines, color=black!30, step=1cm,ultra thin](0,0)grid(10,6);
+					
+					\draw[->,ultra thick,red] (0.5,1.5)--(1.5,1.5);
+					\node at(1.5,1.5)[right,red]{X};
+					\draw[->,ultra thick,BlueGreen] (0.5,1.5)--(1.25,2.25);
+					\node at(1.25,2.25)[above right,BlueGreen]{Y};
+					\draw[->,ultra thick,blue] (0.5,1.5)--(0.5,0.5);
+					\node at(0.5,0.5)[right,blue]{Z};
+					
+					
 					\draw [smooth,black,ultra thick,fill=gray!30,shift={(0,0.3)}](1.5,3.55)
 					..controls(2,3.35)and(4,4)..(4.5,3.8)
 					--(4.5,4.1)
@@ -937,10 +913,65 @@
 					\end{scope}
 					
 					
+					
 					\draw [smooth,black,ultra thick,fill=Dandelion](1,4)..controls(2,3.5)and(4,4.5)..(5,4)
 					--(5,3.7)
 					..controls(4,4.2)and(2,3.2)..(1,3.7)
 					--cycle;
+					
+					
+					%=========================
+					\begin{scope}[shift={(10.5,0)},xscale=-1]
+						\draw [smooth,black,ultra thick,fill=gray!30,shift={(0,0.3)}](1.5,3.55)
+						..controls(2,3.35)and(4,4)..(4.5,3.8)
+						--(4.5,4.1)
+						..controls(4,4.3)and(2,3.65)..(1.5,3.85)
+						--cycle;
+						\draw [black,line width=6pt](3,4.3)--(3,3.9);
+						\draw [white,line width=2pt](3,4.4)--(3,3.9);
+						
+						\begin{scope}[rotate around={9.8:(3,3)},shift={(0.2,0.3)}]
+							\draw [fill=Dandelion,ultra thick](2.5,2.5)rectangle(3.5,3.5);
+							\draw [fill=green!50!black!50,ultra thick](2.5,3)rectangle(3.5,3.5);
+							\draw [black,line width=4pt](3,2.5)--(3,1.7);
+						\end{scope}
+						
+						
+						\draw [smooth,black,ultra thick,fill=Dandelion](1,4)..controls(2,3.5)and(4,4.5)..(5,4)
+						--(5,3.7)
+						..controls(4,4.2)and(2,3.2)..(1,3.7)
+						--cycle;
+						
+						\draw [ultra thick,black](2,4.1)--(2,5);
+						\draw [ultra thick,black](2,5.3)circle(0.3);
+						\node at(2,5.2){\Huge\textbf{-}};
+						
+						\draw [ultra thick,black](4,4.4)--(4,5);
+						\draw [ultra thick,black](4,5.3)circle(0.3);
+						\node at(4,5.28){\large\textbf{+}};
+						
+					\end{scope}
+					
+					%=======================
+					
+					
+					\draw [->,ultra thick,red](2.8,1.75)--(3.5,1.75);
+					\node at(3.15,1.75)[below,red]{+$\Delta$X};
+					
+					\draw [->,ultra thick,red,shift={(4,0)}](3.5,1.75)--(2.8,1.75);
+					\node at(3.15,1.75)[below,red,shift={(3,0)}]{-$\Delta$X};
+					
+					
+					%=======================
+					\draw [ultra thick,black,shift={(0,2.85)}](1,1)-|(0.5,0.4);
+					\draw [ultra thick,black,shift={(0,2.85)}](0.1,0.4)--(0.9,0.4);
+					\draw [ultra thick,black,shift={(0,2.85)}](0.25,0.2)--(0.75,0.2);
+					\draw [ultra thick,black,shift={(0,2.85)}](0.4,0)--(0.6,0);
+					
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.5,1)--(0.5,0.4);
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.1,0.4)--(0.9,0.4);
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.25,0.2)--(0.75,0.2);
+					\draw [ultra thick,black,shift={(5.5,2.85)}](0.4,0)--(0.6,0);
 					
 					\draw [ultra thick,black](2,4.1)--(2,5);
 					\draw [ultra thick,black](2,5.3)circle(0.3);
@@ -949,45 +980,14 @@
 					\draw [ultra thick,black](4,4.4)--(4,5);
 					\draw [ultra thick,black](4,5.3)circle(0.3);
 					\node at(4,5.28){\large\textbf{+}};
-					
-				\end{scope}
-				
-				%=======================
-				
-				
-				\draw [->,ultra thick,red](2.8,1.75)--(3.5,1.75);
-				\node at(3.15,1.75)[below,red]{+$\Delta$X};
-				
-				\draw [->,ultra thick,red,shift={(4,0)}](3.5,1.75)--(2.8,1.75);
-				\node at(3.15,1.75)[below,red,shift={(3,0)}]{-$\Delta$X};
-				
-				
-				%=======================
-				\draw [ultra thick,black,shift={(0,2.85)}](1,1)-|(0.5,0.4);
-				\draw [ultra thick,black,shift={(0,2.85)}](0.1,0.4)--(0.9,0.4);
-				\draw [ultra thick,black,shift={(0,2.85)}](0.25,0.2)--(0.75,0.2);
-				\draw [ultra thick,black,shift={(0,2.85)}](0.4,0)--(0.6,0);
-				
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.5,1)--(0.5,0.4);
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.1,0.4)--(0.9,0.4);
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.25,0.2)--(0.75,0.2);
-				\draw [ultra thick,black,shift={(5.5,2.85)}](0.4,0)--(0.6,0);
-				
-				\draw [ultra thick,black](2,4.1)--(2,5);
-				\draw [ultra thick,black](2,5.3)circle(0.3);
-				\node at(2,5.2){\Huge\textbf{-}};
-				
-				\draw [ultra thick,black](4,4.4)--(4,5);
-				\draw [ultra thick,black](4,5.3)circle(0.3);
-				\node at(4,5.28){\large\textbf{+}};
-			\end{tikzpicture}
-			\caption{分割后的压电蜂鸣片施加不同电压产生的形变}
-			\label{fig13}
-		\end{subfigure}
-		\caption{扫描头原理示意图}
-		\label{fig10}
-	\end{figure}
-	\vskip 1em
+				\end{tikzpicture}
+				\caption{分割后的压电蜂鸣片施加不同电压产生的形变}
+				\label{fig13}
+			\end{subfigure}
+			\caption{扫描头原理示意图}
+			\label{fig10}
+		\end{figure}
+		\vskip 1em
 	
 	
 	
@@ -996,82 +996,82 @@
 	
 	
 	\subsubsection{压电滑台的设计原理}
-	惯性压电滑台是一种利用压电效应与粘滑现象制成的具有高精度、长行程的位移滑台。通过施加一
-	定规律变化的电压，滑台内的压电晶体会产生相应的形变，进而通过磁铁带动滑台产生相应的移动。本系统由 Hsien-Shun Liao 等人设计的开源压电滑台\cite{ref18}进一步改进而来，其体积更小，更加适合应用于自制 STM 项目。该压电滑台可以以“高精度模式”（图 \ref{fig15}）和“长行程模式”（图 \ref{fig16}）两种驱动模式运行。在高精度模式下，电压以一定速率平稳变化，此时线性位移台将在磁力的和摩擦力作用下跟随压电晶体同步运动。在长行程模式下，电压先以一定速率平稳变化，此时线性位移台跟随压电晶体同步运动；随后电压迅速改变，由于惯性，线性位移台的运动将稍滞后于压电晶体，其相对于初始位置会产生一个微小位移 $\Delta s$。重复此过程积累位移即可实现长行程的精确移动。
-	\begin{figure}[htbp]
-		\centering
-		\begin{subfigure}{0.49\linewidth}
+		惯性压电滑台是一种利用压电效应与粘滑现象制成的具有高精度、长行程的位移滑台。通过施加一
+		定规律变化的电压，滑台内的压电晶体会产生相应的形变，进而通过磁铁带动滑台产生相应的移动。本系统由 Hsien-Shun Liao 等人设计的开源压电滑台\cite{ref18}进一步改进而来，其体积更小，更加适合应用于自制 STM 项目。该压电滑台可以以“高精度模式”（图 \ref{fig15}）和“长行程模式”（图 \ref{fig16}）两种驱动模式运行。在高精度模式下，电压以一定速率平稳变化，此时线性位移台将在磁力的和摩擦力作用下跟随压电晶体同步运动。在长行程模式下，电压先以一定速率平稳变化，此时线性位移台跟随压电晶体同步运动；随后电压迅速改变，由于惯性，线性位移台的运动将稍滞后于压电晶体，其相对于初始位置会产生一个微小位移 $\Delta s$。重复此过程积累位移即可实现长行程的精确移动。
+		\begin{figure}[htbp]
 			\centering
-			\includegraphics[width=\textwidth]{tex/fig1/fig1.pdf}
-			\caption{高精度模式}
-			\label{fig15}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.49\linewidth}
-			\centering
-			\includegraphics[width=\textwidth]{tex/fig2/fig2.pdf}
-			\caption{长行程模式}
-			\label{fig16}
-		\end{subfigure}
-		\caption{压电滑台原理示意图}
-		\label{fig14}
-	\end{figure}
-	\vskip 1em
+			\begin{subfigure}{0.49\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{tex/fig1/fig1.pdf}
+				\caption{高精度模式}
+				\label{fig15}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.49\linewidth}
+				\centering
+				\includegraphics[width=\textwidth]{tex/fig2/fig2.pdf}
+				\caption{长行程模式}
+				\label{fig16}
+			\end{subfigure}
+			\caption{压电滑台原理示意图}
+			\label{fig14}
+		\end{figure}
+		\vskip 1em
 	
 	
 	
 	\subsubsection{减震系统的设计原理}
-	本设计方案采用简单的悬挂减震系统为 STM 主体滤除高频振动带来的影响。同时我们分别在减震平台下方和底座上安装铝板与磁铁以增加电磁阻尼，使系统能够更快地衰减高频振动。其设计原理图如图 \ref{fig17} 所示。
-	
-	\begin{figure}[htbp]
-		\centering
-		\begin{tikzpicture}
-			%					\draw[help lines, color=black, step=1cm,ultra thin](0,0)grid(10,6);
-			\begin{scope}[shift={(3,0)}]
-				\draw [black!30,line width=5pt](2,0)--(2,6);
-				\draw [black,line width=10pt](0,0)--(4,0);
-				\draw [black,line width=10pt](0,5)--(4,5);
-				\draw [black,line width=5pt](0.5,0)--(0.5,6);
-				\draw [black,line width=5pt](3.5,0)--(3.5,6);
-				\draw [black,line width=8pt](0.5,5.3)--(0.5,6);
-				\draw [black,line width=8pt](2,5.3)--(2,6);
-				\draw [black,line width=8pt](3.5,5.3)--(3.5,6);
+		本设计方案采用简单的悬挂减震系统为 STM 主体滤除高频振动带来的影响。同时我们分别在减震平台下方和底座上安装铝板与磁铁以增加电磁阻尼，使系统能够更快地衰减高频振动。其设计原理图如图 \ref{fig17} 所示。
+		
+		\begin{figure}[htbp]
+			\centering
+			\begin{tikzpicture}
+				%					\draw[help lines, color=black, step=1cm,ultra thin](0,0)grid(10,6);
+				\begin{scope}[shift={(3,0)}]
+					\draw [black!30,line width=5pt](2,0)--(2,6);
+					\draw [black,line width=10pt](0,0)--(4,0);
+					\draw [black,line width=10pt](0,5)--(4,5);
+					\draw [black,line width=5pt](0.5,0)--(0.5,6);
+					\draw [black,line width=5pt](3.5,0)--(3.5,6);
+					\draw [black,line width=8pt](0.5,5.3)--(0.5,6);
+					\draw [black,line width=8pt](2,5.3)--(2,6);
+					\draw [black,line width=8pt](3.5,5.3)--(3.5,6);
+					
+					\draw [black,line width=10pt](1,1.5)--(3,1.5);
+					\draw [blue,line width=8pt](1,0.3)--(3,0.3);
+					\draw [gray,line width=7pt](1,1.3)--(3,1.3);
+					
+					\draw [dashed,very thick,black](1,1.7)--(0.6,5);
+					\draw [dashed,very thick,black](2,1.7)--(2,5);
+					\draw [dashed,very thick,black](3,1.7)--(3.4,5);
+				\end{scope}
 				
-				\draw [black,line width=10pt](1,1.5)--(3,1.5);
-				\draw [blue,line width=8pt](1,0.3)--(3,0.3);
-				\draw [gray,line width=7pt](1,1.3)--(3,1.3);
+				\draw [very thick, black](2,0.3)--(4,0.3);
+				\node at(2,0.4)[left]{强磁铁};
 				
-				\draw [dashed,very thick,black](1,1.7)--(0.6,5);
-				\draw [dashed,very thick,black](2,1.7)--(2,5);
-				\draw [dashed,very thick,black](3,1.7)--(3.4,5);
-			\end{scope}
-			
-			\draw [very thick, black](2,0.3)--(4,0.3);
-			\node at(2,0.4)[left]{强磁铁};
-			
-			\draw [very thick, black](2,1)--(3,1)--(4,1.3);
-			\node at(2,1)[left]{铝板};
-			
-			\draw [very thick, black](2,2)--(3,2)--(4,1.5);
-			\node at(2,2)[left]{平台};
-			
-			\draw [very thick, black](2,3)--(3.8,3);
-			\node at(2,3)[left]{弹簧};
-			
-			\draw [very thick, black](6.7,0)--(7.3,0.5)--(8,0.5);
-			\node at(8,0.5)[right]{底座};
-			
-			\draw [very thick, black](6.5,3)--(8,3);
-			\node at(8,3)[right]{螺杆};
-			
-			\draw [very thick, black](6.5,5.5)--(8,5.5);
-			\node at(8,5.5)[right]{螺帽};
-			
-		\end{tikzpicture}
-		\caption{减震系统原理示意图}
-		\label{fig17}
-	\end{figure}
-	\vskip 1em
+				\draw [very thick, black](2,1)--(3,1)--(4,1.3);
+				\node at(2,1)[left]{铝板};
+				
+				\draw [very thick, black](2,2)--(3,2)--(4,1.5);
+				\node at(2,2)[left]{平台};
+				
+				\draw [very thick, black](2,3)--(3.8,3);
+				\node at(2,3)[left]{弹簧};
+				
+				\draw [very thick, black](6.7,0)--(7.3,0.5)--(8,0.5);
+				\node at(8,0.5)[right]{底座};
+				
+				\draw [very thick, black](6.5,3)--(8,3);
+				\node at(8,3)[right]{螺杆};
+				
+				\draw [very thick, black](6.5,5.5)--(8,5.5);
+				\node at(8,5.5)[right]{螺帽};
+				
+			\end{tikzpicture}
+			\caption{减震系统原理示意图}
+			\label{fig17}
+		\end{figure}
+		\vskip 1em
 	
 	
 	
@@ -1079,130 +1079,130 @@
 	
 	
 	\subsection{电子电路}
-	电子电路部分主要完成隧穿电流的采集与放大、将数字信号转化为模拟信号以驱动压电滑台和扫描头、执行基本控制指令以及与实现上位机之间的通信等任务。详细电路设计原理图及 PCB 图纸见附录 A。
-	\begin{enumerate}
-		\item \textbf{电源板（Power\_Board）}\par
-		\qquad 电源板通过 USB-A 获得 5V 供电，经由 DC-DC 芯片（ADP5070）产生 $\pm$15V 电压对外输出，其中 +15V 电压经由 LDO（7812 / 7912 / 7805 / LD1117）转化为低波纹、低噪声的 $\pm$12V、5V 和 3.3V 电压输出。
+		电子电路部分主要完成隧穿电流的采集与放大、将数字信号转化为模拟信号以驱动压电滑台和扫描头、执行基本控制指令以及与实现上位机之间的通信等任务。详细电路设计原理图及 PCB 图纸见附录 A。
+		\begin{enumerate}
+			\item \textbf{电源板（Power\_Board）}\par
+			\qquad 电源板通过 USB-A 获得 5V 供电，经由 DC-DC 芯片（ADP5070）产生 $\pm$15V 电压对外输出，其中 +15V 电压经由 LDO（7812 / 7912 / 7805 / LD1117）转化为低波纹、低噪声的 $\pm$12V、5V 和 3.3V 电压输出。
+			
+			\item \textbf{压电滑台驱动板（Motor\_Board）}\par
+			\qquad 压电滑台驱动板通过排线与 ADC \& MCU 板相连。其上的三颗 16-bit DAC（AD5761）分别将接收到的数字信号转化为 X、Y、Z 三个通道的电压输出，用于驱动压电滑台。
+			
+			\item \textbf{扫描头驱动板（Controller\_Board）}\par
+			\qquad 扫描头驱动板同样通过排线与 ADC \& MCU 板相连。其上的四颗 16-bit DAC（AD5761）分别将接收到的数字信号转化为 X、Y、Z 以及 BIAS 四个通道的电压，其中 BIAS 直接作为偏置电压输出，其余三个电压经过运算放大器（OPA2227）运算后输出 Z+X、Z-X、Z+Y 和 Z-Y 四个电压，分别对应压电陶瓷片 +X、-X、+Y、-Y 四个区域。
+			
+			\item \textbf{ADC \& MCU 板（ADC\_And\_MCU\_Board）}\par
+			\qquad 该电路板将接收前置放大器放大后的电流信号，利用其上的 16-bit ADC（ADS-8685）将模拟信号转化为数字信号并将信息转递给 MCU（STM32F03C8T6）。MCU 负责驱动控制 DAC 和 ADC，控制 OLED 的显示内容以及接收、传递数据的任务。MCU 通过两个硬件 SPI 控制 DAC 和 ADC，使用软件模拟 I$^\text{2}$C 控制 OLED 的显示，通过 USART 与电脑进行通信。
+			
+			\item \textbf{转接板（Base\_Connector\_Board）}\par
+			\qquad 承担电路板与 STM 本体以及前置放大器之间的线路转接工作。
+			
+			\item \textbf{前置放大器（TIA\_Board）}\par
+			\qquad 前置放大器采用了跨阻放大器（TIA）方案，它由一个精密运放（OPA627）和一个反馈电阻组成。当反馈电阻为 100M$\Omega$ 时，其可以将 1nA 的输入电流放大为 0.1V 电压在输出端输出。
+			
+		\end{enumerate}
 		
-		\item \textbf{压电滑台驱动板（Motor\_Board）}\par
-		\qquad 压电滑台驱动板通过排线与 ADC \& MCU 板相连。其上的三颗 16-bit DAC（AD5761）分别将接收到的数字信号转化为 X、Y、Z 三个通道的电压输出，用于驱动压电滑台。
-		
-		\item \textbf{扫描头驱动板（Controller\_Board）}\par
-		\qquad 扫描头驱动板同样通过排线与 ADC \& MCU 板相连。其上的四颗 16-bit DAC（AD5761）分别将接收到的数字信号转化为 X、Y、Z 以及 BIAS 四个通道的电压，其中 BIAS 直接作为偏置电压输出，其余三个电压经过运算放大器（OPA2227）运算后输出 Z+X、Z-X、Z+Y 和 Z-Y 四个电压，分别对应压电陶瓷片 +X、-X、+Y、-Y 四个区域。
-		
-		\item \textbf{ADC \& MCU 板（ADC\_And\_MCU\_Board）}\par
-		\qquad 该电路板将接收前置放大器放大后的电流信号，利用其上的 16-bit ADC（ADS-8685）将模拟信号转化为数字信号并将信息转递给 MCU（STM32F03C8T6）。MCU 负责驱动控制 DAC 和 ADC，控制 OLED 的显示内容以及接收、传递数据的任务。MCU 通过两个硬件 SPI 控制 DAC 和 ADC，使用软件模拟 I$^\text{2}$C 控制 OLED 的显示，通过 USART 与电脑进行通信。
-		
-		\item \textbf{转接板（Base\_Connector\_Board）}\par
-		\qquad 承担电路板与 STM 本体以及前置放大器之间的线路转接工作。
-		
-		\item \textbf{前置放大器（TIA\_Board）}\par
-		\qquad 前置放大器采用了跨阻放大器（TIA）方案，它由一个精密运放（OPA627）和一个反馈电阻组成。当反馈电阻为 100M$\Omega$ 时，其可以将 1nA 的输入电流放大为 0.1V 电压在输出端输出。
-		
-	\end{enumerate}
-	
 	
 	
 	
 	
 	
 	\subsection{控制软件}
-	控制软件的开发应包括以下功能：
-	\begin{enumerate}
-		\item \textbf{用户界面}：设计直观、简洁的用户界面，使用户能够轻松控制 STM 并监控状态。
-		\item \textbf{数据采集}：实现数据采集功能，包括隧穿电流的实时记录和存储。
-		\item \textbf{反馈系统}：利用 PID 控制原理对系统进行反馈控制。
-		\item \textbf{命令传递}：实现命令下达功能，传递用户操作指令。
-		\item \textbf{图像处理}：开发图像重建算法，将隧穿电流信号转换为样品表面的三维图像。
-	\end{enumerate}
+		控制软件的开发应包括以下功能：
+		\begin{enumerate}
+			\item \textbf{用户界面}：设计直观、简洁的用户界面，使用户能够轻松控制 STM 并监控状态。
+			\item \textbf{数据采集}：实现数据采集功能，包括隧穿电流的实时记录和存储。
+			\item \textbf{反馈系统}：利用 PID 控制原理对系统进行反馈控制。
+			\item \textbf{命令传递}：实现命令下达功能，传递用户操作指令。
+			\item \textbf{图像处理}：开发图像重建算法，将隧穿电流信号转换为样品表面的三维图像。
+		\end{enumerate}
 	
 	
 	\subsubsection{用户界面设计}
-	用户界面采用 PyQt 设计工具 Qt Designer 开发，其包含串口选择与连接、数据可视化、硬件控制、系统状态监测等一系列功能。GUI 主界面分为四个大区域：结果显示区、调试信息、硬件控制区以及状态监视区（图 \ref{fig19}）。结果显示区可以绘制偏压-隧穿电流曲线、时间-隧穿电流曲线等曲线测试图，也可以绘制由隧穿电流数据处理后转化为的样品表面二维图像。调试信息区负责显示程序运行的运行信息，便于操作与调试。硬件控制区负责设置 DAC 寄存器的值以控制压电滑台、扫描头以及偏转电压，可选择控制对象与控制方式。状态监视区负责显示系统运行状态和任务执行进度，便于随时检查设备与软件运行情况。
-	
-	\begin{figure}[!h]
-		\centering
-		\begin{tikzpicture}
-			begin{tikzpicture}
-			\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.8\textwidth]{GUI.png}};
-			\begin{scope}[x={(image.south east)},y={(image.north west)}]
-				%					 	建立相对坐标系
-				%						\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-				%						\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-				%						\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-				%					 	作图命令
-				\draw [ultra thick](0.005,0.21)rectangle(0.42,0.95);
-				\node at(0.21,0.58){\bf 结果显示区};
-				
-				\draw [ultra thick](0.005,0.01)rectangle(0.42,0.18);
-				\node at(0.21,0.1){\bf 调试信息};
-				
-				\draw [ultra thick](0.45,0.31)rectangle(0.98,0.95);
-				\node at(0.72,0.61){\bf 硬件控制区};
-				
-				\draw [ultra thick](0.45,0.01)rectangle(0.98,0.28);
-				\node at(0.72,0.15){\bf 状态监视区};
-				
-			\end{scope}
-		\end{tikzpicture}
-		\caption{控制软件 GUI 界面}
-		\label{fig19}
-	\end{figure}
+		用户界面采用 PyQt 设计工具 Qt Designer 开发，其包含串口选择与连接、数据可视化、硬件控制、系统状态监测等一系列功能。GUI 主界面分为四个大区域：结果显示区、调试信息、硬件控制区以及状态监视区（图 \ref{fig19}）。结果显示区可以绘制偏压-隧穿电流曲线、时间-隧穿电流曲线等曲线测试图，也可以绘制由隧穿电流数据处理后转化为的样品表面二维图像。调试信息区负责显示程序运行的运行信息，便于操作与调试。硬件控制区负责设置 DAC 寄存器的值以控制压电滑台、扫描头以及偏转电压，可选择控制对象与控制方式。状态监视区负责显示系统运行状态和任务执行进度，便于随时检查设备与软件运行情况。
+		
+		\begin{figure}[!h]
+			\centering
+			\begin{tikzpicture}
+				begin{tikzpicture}
+				\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.8\textwidth]{GUI.png}};
+				\begin{scope}[x={(image.south east)},y={(image.north west)}]
+					%					 	建立相对坐标系
+					%						\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+					%						\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+					%						\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+					%					 	作图命令
+					\draw [ultra thick](0.005,0.21)rectangle(0.42,0.95);
+					\node at(0.21,0.58){\bf 结果显示区};
+					
+					\draw [ultra thick](0.005,0.01)rectangle(0.42,0.18);
+					\node at(0.21,0.1){\bf 调试信息};
+					
+					\draw [ultra thick](0.45,0.31)rectangle(0.98,0.95);
+					\node at(0.72,0.61){\bf 硬件控制区};
+					
+					\draw [ultra thick](0.45,0.01)rectangle(0.98,0.28);
+					\node at(0.72,0.15){\bf 状态监视区};
+					
+				\end{scope}
+			\end{tikzpicture}
+			\caption{控制软件 GUI 界面}
+			\label{fig19}
+		\end{figure}
 	
 	
 	
 	\subsubsection{PID 反馈控制}		
-	PID（比例-积分-微分）反馈控制系统是 STM 中至关重要的组成部分，它负责维持探针与样品表面之间的恒定距离（恒定电流），从而实现对样品表面的扫描。PID 控制器是一种线性控制器，它将给定值（r(t)）与实际输出值（c(t)）的偏差（e(t)）的比例(P)、积分(I)、微分(D)通过线性组合构成控制量（u(t)），依此对控制对象进行控制\cite{ref20}。PID 控制器的工作原理基于以下三个部分：
-	\begin{itemize}
-		\item \textbf{比例（P）}：控制器输出与当前误差成比例。比例控制有利于减少当前误差，但可能存在稳态误差。
+		PID（比例-积分-微分）反馈控制系统是 STM 中至关重要的组成部分，它负责维持探针与样品表面之间的恒定距离（恒定电流），从而实现对样品表面的扫描。PID 控制器是一种线性控制器，它将给定值（r(t)）与实际输出值（c(t)）的偏差（e(t)）的比例(P)、积分(I)、微分(D)通过线性组合构成控制量（u(t)），依此对控制对象进行控制\cite{ref20}。PID 控制器的工作原理基于以下三个部分：
+		\begin{itemize}
+			\item \textbf{比例（P）}：控制器输出与当前误差成比例。比例控制有利于减少当前误差，但可能存在稳态误差。
+			
+			\item \textbf{积分（I）}：控制器输出与误差随时间累积的总和（积分）成比例。积分控制可以消除稳态误差，但可能导致系统产生过冲和振荡。
+			
+			\item \textbf{微分（D）}：控制器输出与误差随时间变化率成比例。微分控制可以帮助预测系统未来行为，减少过冲与震荡并提高系统稳定性。
+		\end{itemize}
 		
-		\item \textbf{积分（I）}：控制器输出与误差随时间累积的总和（积分）成比例。积分控制可以消除稳态误差，但可能导致系统产生过冲和振荡。
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.8\textwidth]{/tex/fig3/fig3.pdf}
+			\caption{PID 控制系统原理框图}
+		\end{figure}
 		
-		\item \textbf{微分（D）}：控制器输出与误差随时间变化率成比例。微分控制可以帮助预测系统未来行为，减少过冲与震荡并提高系统稳定性。
-	\end{itemize}
-	
-	\begin{figure}[!h]
-		\centering
-		\includegraphics[width=0.8\textwidth]{/tex/fig3/fig3.pdf}
-		\caption{PID 控制系统原理框图}
-	\end{figure}
-	
-	
-	在 STM 系统中，PID 控制器需要根据实际的隧穿电流信号来调整探针的 Z 轴位置。例如在恒流模式中，如果隧穿电流增大，表明探针可能离样品表面过近，PID 控制器将指令压电陶瓷扫描器使探针上升，以保持恒定的隧道电流。相反，如果隧穿电流减小，表明探针可能离样品表面过远，控制器将指令探针下降。
-	
-	为了实现有效的PID控制，需要对PID参数（即比例、积分、微分系数）进行精确的调整。这通常通过试错法或使用更高级的参数优化算法来完成。在本项目中，可以通过软件界面来调整这些参数，并实时观察控制效果，直至找到最佳的 PID 参数设置。
+		
+		在 STM 系统中，PID 控制器需要根据实际的隧穿电流信号来调整探针的 Z 轴位置。例如在恒流模式中，如果隧穿电流增大，表明探针可能离样品表面过近，PID 控制器将指令压电陶瓷扫描器使探针上升，以保持恒定的隧道电流。相反，如果隧穿电流减小，表明探针可能离样品表面过远，控制器将指令探针下降。
+		
+		为了实现有效的PID控制，需要对PID参数（即比例、积分、微分系数）进行精确的调整。这通常通过试错法或使用更高级的参数优化算法来完成。在本项目中，可以通过软件界面来调整这些参数，并实时观察控制效果，直至找到最佳的 PID 参数设置。
 	
 	
 	
 	
 	\subsubsection{数据处理}
-	数据处理是 STM 系统中不可或缺的一部分，它负责将探针扫描得到的隧穿电流信号转换为有关样品表面的详细信息。可以利用 Python 的 Scipy 库中的 curve\_fit 函数对电流数据集进行函数拟合，再借助 Numpy 库与 Matplotlib 库将曲线输出至图像。此外还可以利用 Matplotlib 库实现从散点数据到样品表面二维或三维图像的转化，从而获得样品表面的形貌特征。
-	
-	\begin{figure}[!h]
-		\centering
-		\begin{subfigure}{0.3\textwidth}
+		数据处理是 STM 系统中不可或缺的一部分，它负责将探针扫描得到的隧穿电流信号转换为有关样品表面的详细信息。可以利用 Python 的 Scipy 库中的 curve\_fit 函数对电流数据集进行函数拟合，再借助 Numpy 库与 Matplotlib 库将曲线输出至图像。此外还可以利用 Matplotlib 库实现从散点数据到样品表面二维或三维图像的转化，从而获得样品表面的形貌特征。
+		
+		\begin{figure}[!h]
 			\centering
-			\includegraphics[width=\textwidth]{5.png}
-			\caption{曲线拟合}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.3\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{3.png}
-			\caption{二维图像重建}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.3\textwidth}
-			\centering
-			\includegraphics[width=\textwidth]{4.png}
-			\caption{三维图像重建}
-		\end{subfigure}
-		\caption{示例代码输出结果}
-		\begin{minipage}{0.95\linewidth}
-			附注：示例代码见附录 B。代码与结果仅作算法展示与功能示范，使用数据集为模拟生成数据。
-		\end{minipage}
-	\end{figure}
-	\vskip 1em
+			\begin{subfigure}{0.3\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{5.png}
+				\caption{曲线拟合}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.3\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{3.png}
+				\caption{二维图像重建}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.3\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{4.png}
+				\caption{三维图像重建}
+			\end{subfigure}
+			\caption{示例代码输出结果}
+			\begin{minipage}{0.95\linewidth}
+				附注：示例代码见附录 B。代码与结果仅作算法展示与功能示范，使用数据集为模拟生成数据。
+			\end{minipage}
+		\end{figure}
+		\vskip 1em
 	
 	
 	
@@ -1210,189 +1210,189 @@
 	
 	
 	\subsection{STM 的组装与操作}
-	\subsubsection{组装扫描头}
-	扫描头由四部分组成：探针、MMCX 座、PCB 基座以及盘状压电陶瓷。
-	\begin{itemize}
-		\item \textbf{探针}：探针使用直径 0.5 mm 的钨丝直接裁剪制成。将获得的针尖安装在 MMCX 座内孔中并启动 STM 进行测试。倘若扫描精度不理想，则再次裁剪并重复测试，直至获得足够尖锐的针尖。
+		\subsubsection{组装扫描头}
+			扫描头由四部分组成：探针、MMCX 座、PCB 基座以及盘状压电陶瓷。
+			\begin{itemize}
+				\item \textbf{探针}：探针使用直径 0.5 mm 的钨丝直接裁剪制成。将获得的针尖安装在 MMCX 座内孔中并启动 STM 进行测试。倘若扫描精度不理想，则再次裁剪并重复测试，直至获得足够尖锐的针尖。
+				
+				\item \textbf{MMCX 座}：使用 Kinghelm 公司生产的 KH-MMCX-KE-STM，将其焊接在 PCB 基座上。
+				
+				\item \textbf{PCB 基座}：使用漆包线将 PCB 基座上的两个焊盘分别连接在 TIA 板上的 in 焊盘以及 GND 焊盘上。使用环氧树脂胶粘剂（Ergo 5400）将其固定于压电蜂鸣片的铜层中心。
+				
+				\item \textbf{盘状压电陶瓷}：使用市面上常见的压电蜂鸣片作为盘状压电陶瓷。使用刻刀将压电蜂鸣片上的银层划分为四个部分，并用低温锡膏与漆包线将其与转接板的 Z+X、Z-X、Z+Y、Z-Y 四个接点相连。
+				
+			\end{itemize}
 		
-		\item \textbf{MMCX 座}：使用 Kinghelm 公司生产的 KH-MMCX-KE-STM，将其焊接在 PCB 基座上。
 		
-		\item \textbf{PCB 基座}：使用漆包线将 PCB 基座上的两个焊盘分别连接在 TIA 板上的 in 焊盘以及 GND 焊盘上。使用环氧树脂胶粘剂（Ergo 5400）将其固定于压电蜂鸣片的铜层中心。
-		
-		\item \textbf{盘状压电陶瓷}：使用市面上常见的压电蜂鸣片作为盘状压电陶瓷。使用刻刀将压电蜂鸣片上的银层划分为四个部分，并用低温锡膏与漆包线将其与转接板的 Z+X、Z-X、Z+Y、Z-Y 四个接点相连。
-		
-	\end{itemize}
-	
-	
 	
 	
 	
 	
 	
 	\subsubsection{组装压电滑台}
-	压电滑台结构件以铝合金-6061 作为材料，采用数控加工方式制作。压电陶瓷的位移量需较大一些，故选取 2007 年 NEC（Tokin）公司生产的堆叠压电陶瓷。线性位移台选择 IKO Nippon Thompson 公司制造的 BSP7-15SL 精密直线导轨。使用 3 个 DL-MMCX-KE\footnote{可替换为 KH-MMCX-KE-STM} 作为外接接口。磁铁选择 3$\times$3$\times$2 钕铁硼磁铁。备齐材料后，按照图 \ref{fig20} 所示步骤依次组装好两个水平滑台和一个垂直滑台，使用 8 颗 M1.6 紧固螺丝将三个滑台层叠（自下而上顺序：水平-水平-垂直）固定在一起，注意两个水平压电滑台朝向应垂直，各压电滑台接口应朝外。
-	
-	\begin{figure}[htbp]
-		\centering
-		\begin{subfigure}{0.45\textwidth}
+		压电滑台结构件以铝合金-6061 作为材料，采用数控加工方式制作。压电陶瓷的位移量需较大一些，故选取 2007 年 NEC（Tokin）公司生产的堆叠压电陶瓷。线性位移台选择 IKO Nippon Thompson 公司制造的 BSP7-15SL 精密直线导轨。使用 3 个 DL-MMCX-KE\footnote{可替换为 KH-MMCX-KE-STM} 作为外接接口。磁铁选择 3$\times$3$\times$2 钕铁硼磁铁。备齐材料后，按照图 \ref{fig20} 所示步骤依次组装好两个水平滑台和一个垂直滑台，使用 8 颗 M1.6 紧固螺丝将三个滑台层叠（自下而上顺序：水平-水平-垂直）固定在一起，注意两个水平压电滑台朝向应垂直，各压电滑台接口应朝外。
+		
+		\begin{figure}[htbp]
 			\centering
-			\begin{tikzpicture}[scale=0.75]
-				\node[anchor=south west,inner sep=0] (image) at (0,0){
-					\includegraphics[width=\textwidth]{fig17.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.75]
+					\node[anchor=south west,inner sep=0] (image) at (0,0){
+						\includegraphics[width=\textwidth]{fig17.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						
+						\draw [ultra thick](0.8,0.6)--(0.82,0.8);
+						\node at(0.82,0.8)[above]{1：MMCX 座};
+						
+						\draw [ultra thick](0.18,0.41)--(0.1,0.2);
+						\node at(0.1,0.2)[below]{2：压电晶体};
+						\draw [ultra thick](0.22,0.3)--(0.3,0.1);
+						\node at(0.3,0.1)[below]{2：磁铁};
+						
+						\draw [ultra thick](0.36,0.6)--(0.3,0.6);
+						\node at(0.3,0.6)[left]{3：直线导轨};
+						
+						\draw [ultra thick](0.3,0.8)--(0.2,0.8);
+						\node at(0.2,0.8)[left]{4：平台};
+						
+						\draw [ultra thick](0.7,0.18)--(0.8,0.1);
+						\node at(0.8,0.1)[right]{底座};
+						
+						\draw [ultra thick](0.47,0.82)--(0.495,0.9);
+						\draw [ultra thick](0.51,0.72)--(0.505,0.9);
+						\node at(0.5,0.9)[above]{5：4$\times$M2};
+						
+					\end{scope}
+				\end{tikzpicture}
+				\caption{组装过程（水平）}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.75]
+					\node[anchor=south west,inner sep=0] (image) at (0,0){
+						\includegraphics[width=\textwidth,clip,trim=50 30 30 30]{fig18.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						
+						\draw [very thick,dotted](0.35,0.45)rectangle(0.41,0.51);
+						\draw [ultra thick](0.35,0.45)--(0.2,0.29);
+						\draw [very thick,dotted](0.3,0.54)rectangle(0.36,0.59);
+						\draw [ultra thick](0.3,0.54)--(0.18,0.29);
+						\node at(0.25,0.3)[below left]{粘合点};
+						
+						\draw [very thick,dotted](0.6,0.53)rectangle(0.68,0.62);
+						\draw [ultra thick](0.68,0.58)--(0.75,0.62);
+						\node at(0.73,0.62)[right]{粘合点};
+						
+						\draw [ultra thick,red](0.32,0.52)--(0.3,0.75);
+						\node at(0.3,0.75)[above]{VCC};
+						
+						\draw [ultra thick,blue](0.32,0.52)--(0.2,0.5);
+						\node at(0.2,0.5)[left]{GND};
+						
+						\draw [ultra thick,red](0.62,0.48)--(0.75,0.48);
+						\node at(0.75,0.48)[right]{VCC};
+						
+						\draw [ultra thick,blue](0.56,0.58)--(0.68,0.75);
+						\node at(0.68,0.75)[above]{GND};
+						
+						
+					\end{scope}
 					
-					\draw [ultra thick](0.8,0.6)--(0.82,0.8);
-					\node at(0.82,0.8)[above]{1：MMCX 座};
+				\end{tikzpicture}
+				\caption{胶水粘合点与线路连接（水平）}
+			\end{subfigure}
+			\vskip 1em
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}
+					\node[anchor=south west,inner sep=0] (image) at (0,0){
+						\includegraphics[width=\textwidth]{fig19.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						
+						\draw [ultra thick](0.7,0.5)--(0.8,0.78);
+						\node at(0.8,0.75)[above]{1：MMCX 座};
+						
+						\draw [ultra thick](0.13,0.4)--(0.13,0.3);
+						\node at(0.13,0.3)[below]{2：压电晶体};
+						\draw [ultra thick](0.13,0.6)--(0.13,0.7);
+						\node at(0.13,0.7)[above]{2：磁铁};
+						
+						\draw [ultra thick](0.46,0.3)--(0.62,0.1);
+						\node at(0.62,0.1)[right]{3：直线导轨};
+						
+						\draw [ultra thick](0.3,0.9)--(0.2,0.9);
+						\node at(0.2,0.9)[left]{4：平台};
+						
+						\draw [ultra thick](0.3,0.1)--(0.2,0.1);
+						\node at(0.2,0.1)[left]{底座};
+						
+						\draw [ultra thick](0.43,0.7)--(0.495,0.9);
+						\draw [ultra thick](0.43,0.54)--(0.505,0.9);
+						\node at(0.5,0.9)[above]{5：5$\times$M2};
+						
+						\node at(0.8,0.3){盖板};
+						
+					\end{scope}
+				\end{tikzpicture}
+				\caption{组装过程（垂直）}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.75]
+					\node[anchor=south west,inner sep=0] (image) at (0,0){
+						\includegraphics[width=\textwidth]{fig20.png}};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+						% 建立相对坐标系
+						%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+						%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+						%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+						
+						\draw [very thick,dotted](0.33,0.58)rectangle(0.4,0.61);
+						\draw [ultra thick](0.33,0.58)--(0.18,0.29);
+						\draw [very thick,dotted](0.33,0.42)rectangle(0.4,0.45);
+						\draw [ultra thick](0.33,0.42)--(0.2,0.29);
+						\node at(0.25,0.3)[below left]{粘合点};
+						
+						\draw [very thick,dotted](0.6,0.31)rectangle(0.66,0.51);
+						\draw [ultra thick](0.66,0.51)--(0.75,0.62);
+						\node at(0.73,0.62)[right]{粘合点};
+						
+						\draw [ultra thick,red](0.35,0.45)--(0.2,0.72);
+						\node at(0.2,0.7)[above]{VCC};
+						
+						\draw [ultra thick,blue](0.35,0.45)--(0.2,0.5);
+						\node at(0.2,0.5)[left]{GND};
+						
+						\draw [ultra thick,red](0.56,0.415)--(0.75,0.25);
+						\node at(0.73,0.25)[right]{VCC};
+						
+						\draw [ultra thick,blue](0.56,0.47)--(0.56,0.8);
+						\node at(0.56,0.78)[above]{GND};
+						
+					\end{scope}
 					
-					\draw [ultra thick](0.18,0.41)--(0.1,0.2);
-					\node at(0.1,0.2)[below]{2：压电晶体};
-					\draw [ultra thick](0.22,0.3)--(0.3,0.1);
-					\node at(0.3,0.1)[below]{2：磁铁};
-					
-					\draw [ultra thick](0.36,0.6)--(0.3,0.6);
-					\node at(0.3,0.6)[left]{3：直线导轨};
-					
-					\draw [ultra thick](0.3,0.8)--(0.2,0.8);
-					\node at(0.2,0.8)[left]{4：平台};
-					
-					\draw [ultra thick](0.7,0.18)--(0.8,0.1);
-					\node at(0.8,0.1)[right]{底座};
-					
-					\draw [ultra thick](0.47,0.82)--(0.495,0.9);
-					\draw [ultra thick](0.51,0.72)--(0.505,0.9);
-					\node at(0.5,0.9)[above]{5：4$\times$M2};
-					
-				\end{scope}
-			\end{tikzpicture}
-			\caption{组装过程（水平）}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}[scale=0.75]
-				\node[anchor=south west,inner sep=0] (image) at (0,0){
-					\includegraphics[width=\textwidth,clip,trim=50 30 30 30]{fig18.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-					
-					\draw [very thick,dotted](0.35,0.45)rectangle(0.41,0.51);
-					\draw [ultra thick](0.35,0.45)--(0.2,0.29);
-					\draw [very thick,dotted](0.3,0.54)rectangle(0.36,0.59);
-					\draw [ultra thick](0.3,0.54)--(0.18,0.29);
-					\node at(0.25,0.3)[below left]{粘合点};
-					
-					\draw [very thick,dotted](0.6,0.53)rectangle(0.68,0.62);
-					\draw [ultra thick](0.68,0.58)--(0.75,0.62);
-					\node at(0.73,0.62)[right]{粘合点};
-					
-					\draw [ultra thick,red](0.32,0.52)--(0.3,0.75);
-					\node at(0.3,0.75)[above]{VCC};
-					
-					\draw [ultra thick,blue](0.32,0.52)--(0.2,0.5);
-					\node at(0.2,0.5)[left]{GND};
-					
-					\draw [ultra thick,red](0.62,0.48)--(0.75,0.48);
-					\node at(0.75,0.48)[right]{VCC};
-					
-					\draw [ultra thick,blue](0.56,0.58)--(0.68,0.75);
-					\node at(0.68,0.75)[above]{GND};
-					
-					
-				\end{scope}
+				\end{tikzpicture}
+				\caption{胶水粘合点与线路连接（垂直）}
 				
-			\end{tikzpicture}
-			\caption{胶水粘合点与线路连接（水平）}
-		\end{subfigure}
+			\end{subfigure}
+			\caption{滑台组装示意图}
+			\label{fig20}
+		\end{figure}
 		\vskip 1em
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}
-				\node[anchor=south west,inner sep=0] (image) at (0,0){
-					\includegraphics[width=\textwidth]{fig19.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-					
-					\draw [ultra thick](0.7,0.5)--(0.8,0.78);
-					\node at(0.8,0.75)[above]{1：MMCX 座};
-					
-					\draw [ultra thick](0.13,0.4)--(0.13,0.3);
-					\node at(0.13,0.3)[below]{2：压电晶体};
-					\draw [ultra thick](0.13,0.6)--(0.13,0.7);
-					\node at(0.13,0.7)[above]{2：磁铁};
-					
-					\draw [ultra thick](0.46,0.3)--(0.62,0.1);
-					\node at(0.62,0.1)[right]{3：直线导轨};
-					
-					\draw [ultra thick](0.3,0.9)--(0.2,0.9);
-					\node at(0.2,0.9)[left]{4：平台};
-					
-					\draw [ultra thick](0.3,0.1)--(0.2,0.1);
-					\node at(0.2,0.1)[left]{底座};
-					
-					\draw [ultra thick](0.43,0.7)--(0.495,0.9);
-					\draw [ultra thick](0.43,0.54)--(0.505,0.9);
-					\node at(0.5,0.9)[above]{5：5$\times$M2};
-					
-					\node at(0.8,0.3){盖板};
-					
-				\end{scope}
-			\end{tikzpicture}
-			\caption{组装过程（垂直）}
-		\end{subfigure}
-		\hfill
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}[scale=0.75]
-				\node[anchor=south west,inner sep=0] (image) at (0,0){
-					\includegraphics[width=\textwidth]{fig20.png}};
-				\begin{scope}[x={(image.south east)},y={(image.north west)}]
-					% 建立相对坐标系
-					%							\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-					%							\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-					%							\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-					
-					\draw [very thick,dotted](0.33,0.58)rectangle(0.4,0.61);
-					\draw [ultra thick](0.33,0.58)--(0.18,0.29);
-					\draw [very thick,dotted](0.33,0.42)rectangle(0.4,0.45);
-					\draw [ultra thick](0.33,0.42)--(0.2,0.29);
-					\node at(0.25,0.3)[below left]{粘合点};
-					
-					\draw [very thick,dotted](0.6,0.31)rectangle(0.66,0.51);
-					\draw [ultra thick](0.66,0.51)--(0.75,0.62);
-					\node at(0.73,0.62)[right]{粘合点};
-					
-					\draw [ultra thick,red](0.35,0.45)--(0.2,0.72);
-					\node at(0.2,0.7)[above]{VCC};
-					
-					\draw [ultra thick,blue](0.35,0.45)--(0.2,0.5);
-					\node at(0.2,0.5)[left]{GND};
-					
-					\draw [ultra thick,red](0.56,0.415)--(0.75,0.25);
-					\node at(0.73,0.25)[right]{VCC};
-					
-					\draw [ultra thick,blue](0.56,0.47)--(0.56,0.8);
-					\node at(0.56,0.78)[above]{GND};
-					
-				\end{scope}
-				
-			\end{tikzpicture}
-			\caption{胶水粘合点与线路连接（垂直）}
-			
-		\end{subfigure}
-		\caption{滑台组装示意图}
-		\label{fig20}
-	\end{figure}
-	\vskip 1em
 	
 	
 	
