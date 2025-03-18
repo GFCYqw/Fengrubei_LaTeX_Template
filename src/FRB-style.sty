@@ -172,25 +172,34 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}	% 需要 xcolor
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-\lstset{frame=tb,
-	language=Python,
-	aboveskip=3mm,
-	belowskip=3mm,
-	showstringspaces=false,
-	columns=flexible,
-	basicstyle={\small\ttfamily},
-	numbers=left,	%设置行号位置none不显示行号
-	% numberstyle=\tiny\courier, 	%设置行号大小
-	numberstyle=\tiny\color{gray},
-	keywordstyle=\color{blue},
-	commentstyle=\color{dkgreen},
-	stringstyle=\color{mauve},
-	breaklines=true,
-	breakatwhitespace=true,
-	escapeinside=``,	%逃逸字符显示中文
-	tabsize=4,
-	extendedchars=false 	%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{
+	frame			=	tb,		% l(eft)+r(ight)+t(op)+b(ottom)代码框
+	aboveskip		=	3mm,
+	belowskip		=	3mm,
+	showstringspaces=	false,
+	columns			=	flexible,
+	numbers			=	left,	%设置行号位置none不显示行号
+	breakatwhitespace=	true,
+	escapeinside	=	``,		% 逃逸字符显示中文
+	tabsize			=	4,		% tab空格数
+	extendedchars	=	false 	% 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+	breaklines		=	true,	% 自动换行
+	showspaces      =   false,  % 是否显示空格
+	captionpos      =   t,      % 代码标题位置
 	}
+
+\lstdefinestyle{Python}{
+    language		=   Python, % 语言选Python
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\color{gray}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{mauve},
+    commentstyle    =   \color{dkgreen}\ttfamily,
+    breaklines      =   true,   % 自动换行，建议不要写太长的行
+    columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+}
 
 % 防止伪代码与已有包冲突
 \makeatletter
@@ -215,7 +224,13 @@
 
 
 % ====================其他定义====================
-\graphicspath{{img/}}	% 插入图片路径
+% 插入图片路径，将会自动搜索
+\graphicspath{
+	{fig/}
+	{img/}
+	{figures/}
+	{images/}
+	}
 
 \endinput
 

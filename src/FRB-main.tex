@@ -5,6 +5,7 @@
 \documentclass{article}
 \usepackage{FRB-style}
 
+
 \begin{document}
 
 %====================封面====================
@@ -1656,13 +1657,13 @@
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{/PDF_Easy STM_2024-04-03/SCH_ADC_And_MCU_1-P1_2024-04-03.pdf}
+		\includegraphics[width=\textwidth]{SCH/SCH_ADC_And_MCU_1-P1_2024-04-03.pdf}
 		\caption{SCH\_ADC\_And\_MCU}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{/PDF_Easy STM_2024-04-03/SCH_Base_Connector_1-P1_2024-04-03.pdf}
+		\includegraphics[width=\linewidth]{SCH/SCH_Base_Connector_1-P1_2024-04-03.pdf}
 		\caption{SCH\_Base\_Connector}
 	\end{subfigure}
 	\hfill
@@ -1670,13 +1671,13 @@
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{/PDF_Easy STM_2024-04-03/SCH_Controller_1-P1_2024-04-03.pdf}
+		\includegraphics[width=\linewidth]{SCH/SCH_Controller_1-P1_2024-04-03.pdf}
 		\caption{SCH\_Controller}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{/PDF_Easy STM_2024-04-03/SCH_Motor_1-P1_2024-04-03.pdf}
+		\includegraphics[width=\linewidth]{SCH/SCH_Motor_1-P1_2024-04-03.pdf}
 		\caption{SCH\_Motor}
 	\end{subfigure}
 	\hfill
@@ -1684,13 +1685,13 @@
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{/PDF_Easy STM_2024-04-03/SCH_Power_1-P1_2024-04-03.pdf}
+		\includegraphics[width=\linewidth]{SCH/SCH_Power_1-P1_2024-04-03.pdf}
 		\caption{SCH\_Power}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{/PDF_Easy STM_2024-04-03/SCH_TIA_1-P1_2024-04-03.pdf}
+		\includegraphics[width=\linewidth]{SCH/SCH_TIA_1-P1_2024-04-03.pdf}
 		\caption{SCH\_TIA}
 	\end{subfigure}
 	\hfill
@@ -1704,14 +1705,14 @@
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\textwidth,clip,trim= 0 20 0 20]{/PCB/PCB_ADC_And_MCU_2024-04-04.pdf}
+		\includegraphics[width=\textwidth,clip,trim= 0 20 0 20]{PCB/PCB_ADC_And_MCU_2024-04-04.pdf}
 		\caption{PCB\_ADC\_And\_MCU}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 		\vfill
-		\includegraphics[width=\linewidth]{/PCB/PCB_Base_Connector_2024-04-04.pdf}
+		\includegraphics[width=\linewidth]{PCB/PCB_Base_Connector_2024-04-04.pdf}
 		\vfill
 		\caption{PCB\_Base\_Connector}
 	\end{subfigure}
@@ -1720,13 +1721,13 @@
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth,clip,trim= -20 0 -22 0]{/PCB/PCB_Controller_2024-04-04.pdf}
+		\includegraphics[width=\linewidth,clip,trim= -20 0 -22 0]{PCB/PCB_Controller_2024-04-04.pdf}
 		\caption{PCB\_Controller}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth,clip,trim= 10 22 10 40]{/PCB/PCB_Motor_2024-04-04.pdf}
+		\includegraphics[width=\linewidth,clip,trim= 10 22 10 40]{PCB/PCB_Motor_2024-04-04.pdf}
 		\caption{PCB\_Motor}
 	\end{subfigure}
 	\hfill
@@ -1734,18 +1735,22 @@
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth,clip,trim= 0 20 20 0]{/PCB/PCB_Power_2024-04-04.pdf}
+		\includegraphics[width=\linewidth,clip,trim= 0 20 20 0]{PCB/PCB_Power_2024-04-04.pdf}
 		\caption{PCB\_Power}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
-		\includegraphics[width=\linewidth,clip,trim= 0 0 5 0]{/PCB/PCB_TIA_2024-04-04.pdf}
+		\includegraphics[width=\linewidth,clip,trim= 0 0 5 0]{PCB/PCB_TIA_2024-04-04.pdf}
 		\caption{PCB\_TIA}
 	\end{subfigure}
 	\hfill
 	\caption{主要 DIY-STM PCB 设计图}
 \end{figure}
+
+
+
+
 
 
 \clearpage
@@ -1757,201 +1762,35 @@
 \lstset{language=Python}	%代码语言
 \lstset{breaklines}			%自动将长的代码行换行排版
 
-\lstset{caption={PID 控制恒流模式 Python 代码}}
-\begin{lstlisting}
-	import time
-	import matplotlib.pyplot as plt
-	import math
-	
-	# PID控制器参数
-	Kp = 1.0
-	Ki = 0.2
-	Kd = 5.0
-	
-	# 初始化全局变量
-	setpoint = 1.0  # 目标隧穿电流
-	integral = 0.0  # 积分项初始化
-	previous_time = time.time()  # 上次控制时间初始化
-	sample_time = 0.2  # 控制循环的时间间隔，单位：秒
-	previous_error = 0.0  # 初始化previous_error
-	max_runtime = 10  # 最大运行时间，单位：秒
-	
-	# 用于记录数据的列表
-	measurements = []
-	pid_outputs = []
-	times = []
-	
-	# 假设的测量和调整函数
-	def measure_current():
-	# 测量隧穿电流
-	# 这里模拟一个正弦波电流，用于演示
-	return 0.5 + 0.2 * math.sin(2 * math.pi * time.time())
-	
-	def adjust_probe(position):
-	# 调整探针位置
-	# 这里记录PID输出值，用于后续绘图
-	pid_outputs.append(position)
-	
-	def pid_controller():
-	global integral, previous_time, previous_error
-	current_time = time.time()
-	if current_time - previous_time >= max_runtime: # 检查运行时间是否超过最大运行时间
-	return False
-	measured_current = measure_current()
-	error = setpoint - measured_current # 计算误差
-	integral = min(max(integral + error * sample_time, -100), 100)  # 计算积分项，限制在-100到100
-	derivative = (error - previous_error) / sample_time if previous_time != 0 else 0    # 计算微分项
-	previous_error = error
-	output = Kp * error + Ki * integral + Kd * derivative   # 计算PID输出
-	output = max(min(output, 100.0), -100.0)  # PID输出限制在-100到100
-	adjust_probe(output)    # 调整探针位置
-	measurements.append(measured_current)   # 记录数据
-	times.append(current_time - previous_time)
-	return True
-	
-	# 主函数
-	def main():
-	try:
-	while pid_controller():  # 调用PID控制器，根据返回值决定是否继续循环
-	time.sleep(sample_time)  # 等待指定的采样时间
-	except KeyboardInterrupt:
-	print("用户中断了PID控制器。")
-	finally:
-	# 绘制测量电流随时间变化的图表
-	plt.figure(figsize=(10, 5))
-	plt.plot(times, measurements, label='Measured Current')
-	plt.xlabel('Time (s)')
-	plt.ylabel('Current')
-	plt.title('Measured Current Over Time')
-	plt.legend()
-	plt.show()
-	
-	# 绘制PID控制器输出随时间变化的图表
-	plt.figure(figsize=(10, 5))
-	plt.plot(times, pid_outputs, label='PID Output', color='r')
-	plt.xlabel('Time (s)')
-	plt.ylabel('PID Output')
-	plt.title('PID Output Over Time')
-	plt.legend()
-	plt.show()
-	
-	if __name__ == "__main__":
-	main()
-\end{lstlisting}
-
-\clearpage
-\lstset{caption={对数拟合算法示例代码}}
-\begin{lstlisting}
-	import numpy as np
-	import matplotlib.pyplot as plt
-	from scipy.optimize import curve_fit
-	
-	# 生成模拟数据
-	x = np.linspace(1, 10, 50)
-	y = 100 * np.exp(-0.1 * x)  # 使用对数函数生成数据
-	y_noisy = y + np.random.normal(0, 5, x.shape)	# 添加一些噪声
-	
-	# 定义对数函数模型
-	def log_model(x, a, b):
-	return a * np.log(x) + b
-	
-	# 使用curve_fit进行曲线拟合
-	popt, pcov = curve_fit(log_model, x, y_noisy)
-	
-	# 使用拟合参数生成拟合曲线
-	x_fit = np.linspace(1, 10, 200)
-	y_fit = log_model(x_fit, *popt)
-	
-	# 绘制原始数据和拟合曲线
-	plt.figure(figsize=(10, 6))
-	plt.scatter(x, y_noisy, label='Noisy Data', color='blue', alpha=0.5)
-	plt.plot(x_fit, y_fit, label='Fitted Curve', color='red')
-	plt.xlabel('X-axis')
-	plt.ylabel('Y-axis')
-	plt.title('Logarithmic Curve Fitting')
-	plt.legend()
-	plt.show()
-\end{lstlisting}
-
-\clearpage
-\lstset{caption={二维图像重建算法示例代码}}
-\begin{lstlisting}
-	import numpy as np
-	import matplotlib.pyplot as plt
-	
-	np.random.seed(0)	# 设置随机种子以获得可重复的结果
-	n_points = 1000		# 定义数据点的数量
-	
-	# 生成线性分布的x和y坐标
-	x = np.linspace(0, 10 * np.pi, n_points)
-	y = np.linspace(0, 10 * np.pi, n_points)
-	XX, YY = np.meshgrid(x, y)
-	
-	# 生成模拟数据
-	Z = np.sin(XX) + np.sin(YY)	# 生成正弦波数据
-	noise = np.random.normal(0, 0.2, (n_points, n_points))
-	Z_noisy = Z + noise			# 添加噪声
-	
-	# 创建一个新的图形窗口
-	plt.figure(figsize=(10, 8))
-	
-	# 绘制带有噪声的正弦波
-	plt.contourf(XX, YY, Z_noisy, cmap='viridis', levels=20)
-	plt.colorbar(label='Height')
-	plt.title('Surface Image in 2D')
-	plt.xlabel('X Axis')
-	plt.ylabel('Y Axis')
-	
-	# 显示网格
-	plt.grid(True)
-	plt.show()
-\end{lstlisting}
+\lstinputlisting[
+	style       =   Python,
+	caption     =   {\bf PID 控制恒流模式示例代码},
+%	label       =   {xxx.py}
+	]{./code/PID控制恒流模式示例代码.py}
 
 
 \clearpage
-\lstset{caption={三维图像重建算法示例代码}}
-\begin{lstlisting}
-	import numpy as np
-	import matplotlib.pyplot as plt
-	from mpl_toolkits.mplot3d import Axes3D
+\lstinputlisting[
+style       =   Python,
+caption     =   {\bf 对数拟合算法示例代码},
+%	label       =   {xxx.py}
+]{./code/对数拟合算法示例代码.py}
+
+
+\clearpage
+\lstinputlisting[
+style       =   Python,
+caption     =   {\bf 二维图像重建算法示例代码},
+%	label       =   {xxx.py}
+]{./code/二维图像重建算法示例代码.py}
 	
-	np.random.seed(0)	# 设置随机种子以获得可重复的结果
-	n_points = 100		# 定义数据点的数量
 	
-	# 生成线性分布的数据点
-	x = np.linspace(0, 5 * np.pi, n_points)
-	y = np.linspace(0, 5 * np.pi, n_points)
-	z = np.linspace(0, 0.3, n_points)
-	
-	# 生成网格
-	X, Y = np.meshgrid(x, y)
-	Z = np.sin(X) * np.cos(Y)
-	
-	# 添加噪声
-	noise = np.random.normal(0, 0.1, (n_points, n_points))
-	Z_noisy = Z + noise
-	
-	# 创建一个新的图形窗口
-	fig = plt.figure(figsize=(10, 8))
-	
-	# 添加一个3D subplot
-	ax = fig.add_subplot(111, projection='3d')
-	
-	# 绘制带有噪声的三维散点图
-	ax.scatter(X, Y, Z_noisy, c=Z_noisy, cmap='viridis', s=5)
-	
-	# 添加颜色条
-	ax.figure.colorbar(ax.scatter(X, Y, Z_noisy, c=Z_noisy, cmap='viridis', s=5), label='Height')
-	
-	# 设置标题和轴标签
-	ax.set_title('Surface Image in 3D')
-	ax.set_xlabel('X Axis')
-	ax.set_ylabel('Y Axis')
-	ax.set_zlabel('Z Axis')
-	
-	# 显示图形
-	plt.show()
-\end{lstlisting}
+\clearpage
+\lstinputlisting[
+style       =   Python,
+caption     =   {\bf 三维图像重建算法示例代码},
+%	label       =   {xxx.py}
+]{./code/三维图像重建算法示例代码.py}
 %====================附录====================
 	
 	
