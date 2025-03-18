@@ -32,7 +32,7 @@
 \RequirePackage{setspace}	% 设置行间距
 \RequirePackage{changepage}	% 左右缩进
 \RequirePackage{fancyhdr} 	% 页眉页脚
-\RequirePackage{fontspec}		% 字体
+\RequirePackage{fontspec}	% 字体
 \RequirePackage{float}		% 浮动体支持 [H]
 \RequirePackage{graphicx}	% 插入图片
 \RequirePackage{caption}	% 图表标题
@@ -185,8 +185,8 @@
 	extendedchars	=	false 	% 解决代码跨页时，章节标题，页眉等汉字不显示的问题
 	breaklines		=	true,	% 自动换行
 	showspaces      =   false,  % 是否显示空格
-	captionpos      =   t,      % 代码标题位置
-	}
+	captionpos      =   t      	% 代码标题位置
+}
 
 \lstdefinestyle{Python}{
     language		=   Python, % 语言选Python
@@ -198,7 +198,7 @@
     commentstyle    =   \color{dkgreen}\ttfamily,
     breaklines      =   true,   % 自动换行，建议不要写太长的行
     columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
-    basewidth       =   0.5em,
+    basewidth       =   0.5em
 }
 
 % 防止伪代码与已有包冲突
@@ -224,7 +224,7 @@
 
 
 % ====================其他定义====================
-% 插入图片路径，将会自动搜索
+% 插入图片路径，将会自动搜索所列文件夹
 \graphicspath{
 	{fig/}
 	{img/}
