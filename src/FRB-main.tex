@@ -31,7 +31,11 @@
 %    \rightline{\xinwei\sanhao{——副标题}} % 副标题三号华文新魏居右
 \end{spacing}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ！！！注意千万不能加作者学院等信息
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \pagenumbering{gobble} % 封面无页码
 %\thispagestyle{empty}
@@ -43,12 +47,14 @@
 \clearpage
 \pagenumbering{roman}	% 摘要目录页小写罗马
 
+\begin{spacing}{1.625}
+
 
 \xiaosi
 \section*{摘要}
-\phantomsection
+\phantomsection{}
 \addcontentsline{toc}{section}{摘要}
-\begin{spacing}{1.5}
+%\begin{spacing}{1.5}
 	\setParDis %设置段间距为 0
 	本项目提出了一种创新的基于三维压电滑台的自制扫描隧道显微镜（STM）设计方案，旨在为科研和教育领域提供一种具有高成本效益、操作简便的纳米级表面分析工具。该设计方案充分考虑了 STM 的核心原理，即量子隧道效应，以及实现原子级别分辨率成像所需的关键组件，包括探针、样品台、压电陶瓷扫描器、反馈控制系统和真空系统。我们详细讨论了在设计和构建过程中遇到的技术难点，例如如何制备具有纳米级锐度的探针、如何精确控制极小隧穿电流以及如何实现探针的纳米级精确移动。
 	
@@ -58,15 +64,18 @@
 	
 	最后，我们对自制 STM 的优劣进行了分析，并提出了未来优化的方向，包括提高系统的稳定性和可靠性，以及开发更加直观易用的用户界面。通过开源与社区合作，我们相信自制 STM 项目能够激发更广泛的科学兴趣，促进科学知识的传播和技术的创新。
 	
-\end{spacing}
+
 
 \textbf{关键词：}扫描隧道显微镜（STM），三维压电滑台，低成本，科研工具，教育应用，开源硬件
+%\end{spacing}
+
+
 
 \newpage
 \section*{\textbf{Abstract}} % XSP 2023/3/8: Abstract 加粗
-\phantomsection
+\phantomsection{}
 \addcontentsline{toc}{section}{Abstract}
-\begin{spacing}{1.5}
+%\begin{spacing}{1.5}
 	\begin{adjustwidth}{0.42cm}{0.42cm}
 		\setParDis %设置段间距为 0
 		
@@ -81,15 +90,15 @@
 		
 		\textbf{Keywords: Scanning Tunneling Microscope (STM), Three-Dimensional Piezoelectric Stage, Low Cost, Research Instrument, Educational Application, Open-Source Hardware}
 	\end{adjustwidth}
-\end{spacing}
+%\end{spacing}
 %====================摘要====================
 
 
 %====================目录====================
-\phantomsection
+\phantomsection{}
 \clearpage
 %\addcontentsline{toc}{section}{目录}
-\begin{spacing}{1.5}
+%\begin{spacing}{1.5}
 	% 目录
 	\tableofcontents
 	
@@ -98,7 +107,7 @@
 	{%
 		\let\oldnumberline\numberline%
 		\renewcommand{\numberline}{\figurename~\oldnumberline}%
-		\phantomsection
+		\phantomsection{}
 		%	\addcontentsline{toc}{section}{插图目录}
 		\listoffigures%
 	}
@@ -108,16 +117,16 @@
 	{%
 		\let\oldnumberline\numberline%
 		\renewcommand{\numberline}{\tablename~\oldnumberline}%
-		\phantomsection
+		\phantomsection{}
 		%	\addcontentsline{toc}{section}{表格目录}
 		\listoftables
 	}
-\end{spacing}
+%\end{spacing}
 %====================目录====================
 
 
 %====================正文====================
-\begin{spacing}{1.5}
+%\begin{spacing}{1.8}
 	
 \renewcommand{\headrulewidth}{0.4pt} % 恢复页眉装饰线
 %\lhead{} 
@@ -1565,7 +1574,7 @@
 	
 	
 	\section*{结论}
-	\phantomsection
+	\phantomsection{}
 	\addcontentsline{toc}{section}{结论} % 将无标号章节添加至目录
 	\setParDis %设置段间距为 0
 	\subsection{应用前景}
@@ -1589,9 +1598,9 @@
 	
 %====================参考文献====================
 \newpage
-\phantomsection
+\phantomsection{}
 \section*{参考文献} % section*生成无标号章节题目
-\setParDis %设置段间距为 0
+%\setParDis %设置段间距为 0
 \addcontentsline{toc}{section}{参考文献} % 将无标号章节添加至目录
 \renewcommand{\section}[2]{}
 %\bibliography{FRB-ref}
@@ -1638,16 +1647,18 @@
 	
 	
 \end{thebibliography}
+
+
 \end{spacing}
 %====================参考文献====================
 
 
-%====================附录====================
+%====================附录A====================
 \newpage
 \appendix
 %\setcounter{figure}{0}
 \section*{附录 A\quad 电路设计}
-\phantomsection
+\phantomsection{}
 \addcontentsline{toc}{section}{附录 A\quad 电路设计} % 将无标号章节添加至目录
 \label{app:A}
 
@@ -1700,11 +1711,6 @@
 \end{figure}
 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 这部分不知道抽什么风突然无法找到文件，暂时注释掉
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!h]
 	\centering
 	\hfill
@@ -1753,14 +1759,14 @@
 	\caption{主要 DIY-STM PCB 设计图}
 \end{figure}
 
+%====================附录A====================
 
 
-
-
+%====================附录B====================
 
 \clearpage
 \section*{附录 B\quad 示例代码}
-\phantomsection
+\phantomsection{}
 \addcontentsline{toc}{section}{附录 B\quad 示例代码} % 将无标号章节添加至目录
 \label{app:B}
 
@@ -1796,7 +1802,7 @@ style       =   Python,
 caption     =   {\bf 三维图像重建算法示例代码},
 %	label       =   {xxx.py}
 ]{./code/三维图像重建算法示例代码.py}
-%====================附录====================
+%====================附录B====================
 	
 	
 \end{document}
