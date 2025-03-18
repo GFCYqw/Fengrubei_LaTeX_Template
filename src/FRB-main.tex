@@ -98,30 +98,30 @@
 \phantomsection{}
 \clearpage
 %\addcontentsline{toc}{section}{目录}
-%\begin{spacing}{1.5}
-	% 目录
-	\tableofcontents
-	
-	\clearpage
-	% 插图目录
-	{%
-		\let\oldnumberline\numberline%
-		\renewcommand{\numberline}{\figurename~\oldnumberline}%
-		\phantomsection{}
-		%	\addcontentsline{toc}{section}{插图目录}
-		\listoffigures%
-	}
-	
-%	\clearpage
-	% 表格目录
-	{%
-		\let\oldnumberline\numberline%
-		\renewcommand{\numberline}{\tablename~\oldnumberline}%
-		\phantomsection{}
-		%	\addcontentsline{toc}{section}{表格目录}
-		\listoftables
-	}
-%\end{spacing}
+
+% 目录
+\tableofcontents
+
+\clearpage
+% 插图目录
+{%
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{\figurename~\oldnumberline}%
+	\phantomsection{}
+	%	\addcontentsline{toc}{section}{插图目录}
+	\listoffigures%
+}
+
+%\clearpage
+% 表格目录
+{%
+	\let\oldnumberline\numberline%
+	\renewcommand{\numberline}{\tablename~\oldnumberline}%
+	\phantomsection{}
+	%	\addcontentsline{toc}{section}{表格目录}
+	\listoftables
+}
+
 %====================目录====================
 
 
@@ -135,7 +135,7 @@
 
 
 \clearpage
-\pagenumbering{arabic} %正文页码从1开始，用阿拉伯数字
+\pagenumbering{arabic} % 正文页码从1开始，用阿拉伯数字
 \setcounter{page}{1} 
 \section{引言}
 %\setParDis %设置段间距为 0
@@ -625,8 +625,8 @@
 	
 	
 	\clearpage
-	\section{自制 STM 的设计方案}
-	\setParDis %设置段间距为 0
+\section{自制 STM 的设计方案}
+%	\setParDis %设置段间距为 0
 	\subsection{基本组成}
 	\begin{figure}[htbp]
 		\centering 
@@ -1573,25 +1573,23 @@
 	\setcounter{subsection}{0}	%重新计数子章节
 	
 	
-	\section*{结论}
-	\phantomsection{}
-	\addcontentsline{toc}{section}{结论} % 将无标号章节添加至目录
-	\setParDis %设置段间距为 0
+\section*{结论}
+\phantomsection{}
+\addcontentsline{toc}{section}{结论} % 将无标号章节添加至目录
+%	\setParDis %设置段间距为 0
 	\subsection{应用前景}
-	自制 STM 项目不仅可以在技术上验证低成本实现原子级分辨率成像的可行性，也能为纳米科学领域的研究和教育提供新的工具。通过自制 STM，研究人员能够更加方便地在实验室中探索物质表面的微观结构，这对于新材料的开发、表面科学的研究以及纳米技术的应用都具有重要意义。在教育领域，自制 STM 可以作为辅助教学工具，帮助学生直观理解量子力学和纳米技术的概念，激发他们对科学研究的兴趣。此外，借助自制 STM 的开放性，其为全球科学社区提供了一个共享知识和资源的途径，有助于推动全球范围内相关科学的合作与创新。
+		自制 STM 项目不仅可以在技术上验证低成本实现原子级分辨率成像的可行性，也能为纳米科学领域的研究和教育提供新的工具。通过自制 STM，研究人员能够更加方便地在实验室中探索物质表面的微观结构，这对于新材料的开发、表面科学的研究以及纳米技术的应用都具有重要意义。在教育领域，自制 STM 可以作为辅助教学工具，帮助学生直观理解量子力学和纳米技术的概念，激发他们对科学研究的兴趣。此外，借助自制 STM 的开放性，其为全球科学社区提供了一个共享知识和资源的途径，有助于推动全球范围内相关科学的合作与创新。
 	
 	
 	\subsection{市场需求与商业化}
-	随着纳米技术的快速发展，对于能够提供高分辨率表面分析的仪器需求日益增长。自制 STM 因其低成本、容易操作的特点，具有很强的的市场竞争潜力，尤其是在教育和小型研究机构中。自制 STM 可以作为一种经济实惠的科研工具，满足基础研究和教学的需求。此外，随着自制 STM 技术的优化与成熟，其商业化前景也将逐渐明朗。通过与工业界合作，可以将自制 STM 技术转化为商业产品，为更广泛的学科提供服务，如实验教育、材料科学、生物医学和半导体工业等诸多领域。
+		随着纳米技术的快速发展，对于能够提供高分辨率表面分析的仪器需求日益增长。自制 STM 因其低成本、容易操作的特点，具有很强的的市场竞争潜力，尤其是在教育和小型研究机构中。自制 STM 可以作为一种经济实惠的科研工具，满足基础研究和教学的需求。此外，随着自制 STM 技术的优化与成熟，其商业化前景也将逐渐明朗。通过与工业界合作，可以将自制 STM 技术转化为商业产品，为更广泛的学科提供服务，如实验教育、材料科学、生物医学和半导体工业等诸多领域。
 	
 	
 	\subsection{优劣分析与未来优化}
-	自制 STM 项目虽然在成本和操作性方面具有明显优势，但也存在一些局限性。例如，与商业级 STM 系统相比，自制 STM 可能在成像精度、长期可靠性方面存在不足。此外，自制 STM 的维护和升级可能需要用户具备一定的技术背景，这可能限制了其在非专业用户中的普及。
+		自制 STM 项目虽然在成本和操作性方面具有明显优势，但也存在一些局限性。例如，与商业级 STM 系统相比，自制 STM 可能在成像精度、长期可靠性方面存在不足。此外，自制 STM 的维护和升级可能需要用户具备一定的技术背景，这可能限制了其在非专业用户中的普及。
+		
+		鉴于此，未来的工作可以集中在改进自制 STM 的设计、提高其性能和用户体验上。例如，通过采用更先进的材料和制造技术，可以提高 STM 的结构稳定性和测量精度。同时，开发更加直观易用的用户界面和软件工具，可以降低操作难度，使 STM 更加适合非专业用户使用。另外通过社区合作和开源共享，可以集合更多人的智慧，共同推动自制 STM 技术的发展和完善。
 	
-	鉴于此，未来的工作可以集中在改进自制 STM 的设计、提高其性能和用户体验上。例如，通过采用更先进的材料和制造技术，可以提高 STM 的结构稳定性和测量精度。同时，开发更加直观易用的用户界面和软件工具，可以降低操作难度，使 STM 更加适合非专业用户使用。另外通过社区合作和开源共享，可以集合更多人的智慧，共同推动自制 STM 技术的发展和完善。
-	
-
-
 %\end{spacing}
 %====================正文====================
 	
@@ -1604,49 +1602,49 @@
 \addcontentsline{toc}{section}{参考文献} % 将无标号章节添加至目录
 \renewcommand{\section}[2]{}
 %\bibliography{FRB-ref}
-\begin{thebibliography}{25}
-	\bibitem{ref1} 庞宗强.组合扫描探针显微镜系统研制[D].合肥:中国科学技术大学,2010.
-	
-	\bibitem{ref2} 陆轻铀.新型强力压电马达及其在恶劣条件下原子成像中的应用[J].物理, 2017,3:168-177.
-	
-	\bibitem{ref3} 夏志刚.高稳定与高重复电化学扫描隧道显微镜研制[D].合肥:中国科学技术大学, 2014.
-	
-	\bibitem{ref4} Pan S H, Hudson E W, Davis J C. $^\text{3}$He refrigerator based very low temperature scanning tunnelingmicroscope[J]. Review of Science Instruments, 1999, 70(2):1459-1463.
-	
-	\bibitem{ref5} Meckler S, Gyamfi M, Pietzsch O, et al. A low-temperature spin-polarized scanning tunneling microscope operating in a fully rotatable magnetic field[J]. Review of Science Instruments, 2009, 80: 023708.
-	
-	\bibitem{ref6} Pietzsch O, Kubetzka A, Haude D, et al. A low-temperature ultrahigh vacuumscanning tunneling microscope with a split-coil magnet and a rotary motionstepper motor for high spatialresolution studies of surface magnetism[J]. Review of Science Instruments, 2000, 71(2):424-430.
-	
-	\bibitem{ref7}Hug H J, Stiefel B, Schendel P J A, et al. A low temperature ultrahighvaccum scanning force microscope[J]. Review of Science Instruments, 1999, 70(9):3625-3640.
-	
-	\bibitem{ref8} 周泽清. 扫描隧道显微镜的研制及其应用研究[D]. 南京邮电大学, 2020.
-	
-	\bibitem{ref9} 江澄. 我国太赫兹扫描隧道显微镜系统研制实现突破[EB/OL]. (2022-02-25)[2024-04-06]. \href{https://www.cas.cn/syky/202202/t20220225\_4826270.shtml}{https://www.cas.cn/syky/202202/t20220225\_4826270.shtml}.
-	
-	\bibitem{ref10} Yan J H, Ma J J, Wang A W, et al. A time-shared switching scheme designed for multi-probe scanning tunneling microscope[J]. Review of Scientific Instruments, 2021, 92(10): 103702.
-	
-	\bibitem{ref11} D Berard. Home-Built STM[EB/OL]. 2014[2024-04-06]. \href{https://dberard.com/home-built-stm/}{https://dberard.com/home-built-stm/}.
-	
-	\bibitem{ref12} Alexander J D. Simple STM Project[EB/OL]. (2003-12)[2024-04-06]. \href{https://john-alexander42.github.io/simple-stm-web-page/}{https://john-alexander42.github.io/simple-stm-web-page/}.
-	
-	\bibitem{ref13} Alexander J D, Tortonese M, Nguyen T. Atomic force microscope with integrated optics for attachment to optical microscope: US005952657A[P]. 1999-09-14.
-	
-	\bibitem{ref14} Wallash A, Levit L B. Electrical breakdown and ESD phenomena for devices with nanometer-to-micron gaps[C]. SPIE MOEMS-MEMS. 2003. 
-	
-	\bibitem{ref15} Tirumala R, Go D B. An analytical formulation for the modified Paschen’s curve[J]. Applied Physics Letters, 2010, 97(15): 151502.
-	
-	\bibitem{ref16} Besocke K. An easily operable scanning tunneling microscope[J]. Surface Science, 1987, 181(1): 1-8.
-	
-	\bibitem{ref17} Ma W. Open STM: A low-cost scanning tunneling microscope with a fast approach method[J]. HardwareX, 2024, 17: e00504.
-	
-	\bibitem{ref18} Liao H S, Werner C, Slipets R, et al. Low-cost, open-source XYZ nanopositioner for high-precision analytical applications. HardwareX, 11, e00317.
-	
-	\bibitem{ref19} R Reifenberger. TEM Pictures of STM Tips[EB/OL]. (2002-07-19)[2024-04-06]. \href{https://www.physics.purdue.edu/nanophys/uhvstm/tip.html}{https://www.physics.purdue.edu/nanophys/uhvstm/tip.html}.
-	
-	\bibitem{ref20} 李韶远. 唐钢无头轧制多级传动系统控制策略的研究[D]. 河北工业大学, 2003.
-	
-	
-\end{thebibliography}
+	\begin{thebibliography}{25}
+		\bibitem{ref1} 庞宗强.组合扫描探针显微镜系统研制[D].合肥:中国科学技术大学,2010.
+		
+		\bibitem{ref2} 陆轻铀.新型强力压电马达及其在恶劣条件下原子成像中的应用[J].物理, 2017,3:168-177.
+		
+		\bibitem{ref3} 夏志刚.高稳定与高重复电化学扫描隧道显微镜研制[D].合肥:中国科学技术大学, 2014.
+		
+		\bibitem{ref4} Pan S H, Hudson E W, Davis J C. $^\text{3}$He refrigerator based very low temperature scanning tunnelingmicroscope[J]. Review of Science Instruments, 1999, 70(2):1459-1463.
+		
+		\bibitem{ref5} Meckler S, Gyamfi M, Pietzsch O, et al. A low-temperature spin-polarized scanning tunneling microscope operating in a fully rotatable magnetic field[J]. Review of Science Instruments, 2009, 80: 023708.
+		
+		\bibitem{ref6} Pietzsch O, Kubetzka A, Haude D, et al. A low-temperature ultrahigh vacuumscanning tunneling microscope with a split-coil magnet and a rotary motionstepper motor for high spatialresolution studies of surface magnetism[J]. Review of Science Instruments, 2000, 71(2):424-430.
+		
+		\bibitem{ref7}Hug H J, Stiefel B, Schendel P J A, et al. A low temperature ultrahighvaccum scanning force microscope[J]. Review of Science Instruments, 1999, 70(9):3625-3640.
+		
+		\bibitem{ref8} 周泽清. 扫描隧道显微镜的研制及其应用研究[D]. 南京邮电大学, 2020.
+		
+		\bibitem{ref9} 江澄. 我国太赫兹扫描隧道显微镜系统研制实现突破[EB/OL]. (2022-02-25)[2024-04-06]. \href{https://www.cas.cn/syky/202202/t20220225\_4826270.shtml}{https://www.cas.cn/syky/202202/t20220225\_4826270.shtml}.
+		
+		\bibitem{ref10} Yan J H, Ma J J, Wang A W, et al. A time-shared switching scheme designed for multi-probe scanning tunneling microscope[J]. Review of Scientific Instruments, 2021, 92(10): 103702.
+		
+		\bibitem{ref11} D Berard. Home-Built STM[EB/OL]. 2014[2024-04-06]. \href{https://dberard.com/home-built-stm/}{https://dberard.com/home-built-stm/}.
+		
+		\bibitem{ref12} Alexander J D. Simple STM Project[EB/OL]. (2003-12)[2024-04-06]. \href{https://john-alexander42.github.io/simple-stm-web-page/}{https://john-alexander42.github.io/simple-stm-web-page/}.
+		
+		\bibitem{ref13} Alexander J D, Tortonese M, Nguyen T. Atomic force microscope with integrated optics for attachment to optical microscope: US005952657A[P]. 1999-09-14.
+		
+		\bibitem{ref14} Wallash A, Levit L B. Electrical breakdown and ESD phenomena for devices with nanometer-to-micron gaps[C]. SPIE MOEMS-MEMS. 2003. 
+		
+		\bibitem{ref15} Tirumala R, Go D B. An analytical formulation for the modified Paschen’s curve[J]. Applied Physics Letters, 2010, 97(15): 151502.
+		
+		\bibitem{ref16} Besocke K. An easily operable scanning tunneling microscope[J]. Surface Science, 1987, 181(1): 1-8.
+		
+		\bibitem{ref17} Ma W. Open STM: A low-cost scanning tunneling microscope with a fast approach method[J]. HardwareX, 2024, 17: e00504.
+		
+		\bibitem{ref18} Liao H S, Werner C, Slipets R, et al. Low-cost, open-source XYZ nanopositioner for high-precision analytical applications. HardwareX, 11, e00317.
+		
+		\bibitem{ref19} R Reifenberger. TEM Pictures of STM Tips[EB/OL]. (2002-07-19)[2024-04-06]. \href{https://www.physics.purdue.edu/nanophys/uhvstm/tip.html}{https://www.physics.purdue.edu/nanophys/uhvstm/tip.html}.
+		
+		\bibitem{ref20} 李韶远. 唐钢无头轧制多级传动系统控制策略的研究[D]. 河北工业大学, 2003.
+		
+		
+	\end{thebibliography}
 
 
 \end{spacing}
