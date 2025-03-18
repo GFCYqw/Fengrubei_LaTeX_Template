@@ -48,14 +48,13 @@
 \pagenumbering{roman}	% 摘要目录页小写罗马
 
 \begin{spacing}{1.625}
-
-
 \xiaosi
+
+
 \section*{摘要}
 \phantomsection{}
 \addcontentsline{toc}{section}{摘要}
 %\begin{spacing}{1.5}
-	\setParDis %设置段间距为 0
 	本项目提出了一种创新的基于三维压电滑台的自制扫描隧道显微镜（STM）设计方案，旨在为科研和教育领域提供一种具有高成本效益、操作简便的纳米级表面分析工具。该设计方案充分考虑了 STM 的核心原理，即量子隧道效应，以及实现原子级别分辨率成像所需的关键组件，包括探针、样品台、压电陶瓷扫描器、反馈控制系统和真空系统。我们详细讨论了在设计和构建过程中遇到的技术难点，例如如何制备具有纳米级锐度的探针、如何精确控制极小隧穿电流以及如何实现探针的纳米级精确移动。
 	
 	为了解决这些挑战，我们采用了先进的电子电路设计，包括高精度的前置放大器和数字模拟转换器，以及基于 STM32F103C8T6 微控制器的固件程序。控制软件采用Python语言开发，提供友好的用户界面和强大的数据处理功能，能够将隧穿电流信号转换为样品表面的二维与三维图像。
@@ -64,9 +63,7 @@
 	
 	最后，我们对自制 STM 的优劣进行了分析，并提出了未来优化的方向，包括提高系统的稳定性和可靠性，以及开发更加直观易用的用户界面。通过开源与社区合作，我们相信自制 STM 项目能够激发更广泛的科学兴趣，促进科学知识的传播和技术的创新。
 	
-
-
-\textbf{关键词：}扫描隧道显微镜（STM），三维压电滑台，低成本，科研工具，教育应用，开源硬件
+	\textbf{关键词：}扫描隧道显微镜（STM），三维压电滑台，低成本，科研工具，教育应用，开源硬件
 %\end{spacing}
 
 
@@ -76,10 +73,8 @@
 \phantomsection{}
 \addcontentsline{toc}{section}{Abstract}
 %\begin{spacing}{1.5}
-	\begin{adjustwidth}{0.42cm}{0.42cm}
-		\setParDis %设置段间距为 0
-		
-		\qquad This project introduces an innovative self-made Scanning Tunneling Microscope (STM) design based on a three-dimensional piezoelectric stage, aimed at providing an affordable and easy-to-use tool for nanoscale surface analysis in research and education. The design takes into account the fundamental principle of STM, the quantum tunneling effect, and includes essential components for achieving atomic-level imaging: a probe, sample stage, piezoelectric scanner, feedback control system, and vacuum environment. We have detailed the technical challenges faced during the design and construction, such as crafting probes with nanometer-sharp tips, controlling minute tunneling currents, and facilitating precise nanometer-level probe movement.
+	\begin{adjustwidth}{0.42cm}{0.42cm}		
+		This project introduces an innovative self-made Scanning Tunneling Microscope (STM) design based on a three-dimensional piezoelectric stage, aimed at providing an affordable and easy-to-use tool for nanoscale surface analysis in research and education. The design takes into account the fundamental principle of STM, the quantum tunneling effect, and includes essential components for achieving atomic-level imaging: a probe, sample stage, piezoelectric scanner, feedback control system, and vacuum environment. We have detailed the technical challenges faced during the design and construction, such as crafting probes with nanometer-sharp tips, controlling minute tunneling currents, and facilitating precise nanometer-level probe movement.
 		
 		To overcome these challenges, we have implemented advanced electronic circuitry, featuring a high-precision preamplifier and digital-to-analog converters, alongside firmware programmed on the STM32F103C8T6 microcontroller. The control software, developed in Python, offers a user-friendly interface and robust data processing capabilities, converting tunneling current signals into two or three-dimensional surface images.
 		
@@ -138,8 +133,6 @@
 \pagenumbering{arabic} % 正文页码从1开始，用阿拉伯数字
 \setcounter{page}{1} 
 \section{引言}
-%\setParDis %设置段间距为 0
-
 	\subsection{显微镜技术的历史与发展}
 	\subsubsection[光学显微镜]{光学显微镜}
 	光学显微镜的发展始于 16 世纪末，当时人们开始尝试使用透镜放大小物体。这一时期的镜片制作技术为后来的各式显微镜的出现奠定了基础。	
@@ -205,7 +198,6 @@
 	
 	
 	\subsection{STM 的研究现状与市场现有产品分析}
-	%		\setParDis %设置段间距为 0
 	\subsubsection[STM 研究现状]{STM 研究现状}
 	扫描隧道显微镜自 1981 年发明以来，已经成为纳米科学领域研究不可或缺的重要工具。与此同时，如低温扫描隧道显微镜（LT-STM）等在特殊条件下工作的显微镜也有所发展\cite{ref5,ref6,ref7}。
 	
@@ -260,7 +252,6 @@
 	
 \clearpage
 \section{STM 简介}
-\setParDis %设置段间距为 0
 	\subsection{量子隧穿效应与 STM 基本原理}
 	为了逐步理解量子隧穿效应，我们首先研究粒子在经典物理下的行为。为了简化描述，我们只考虑粒子的一维运动。此时粒子的运动可以被如下方程所描述：
 	\begin{align*}
@@ -436,7 +427,6 @@
 	
 	\clearpage
 	\section{自制 STM 的技术难点与初步解决方案}
-	\setParDis %设置段间距为 0
 	
 	\begin{enumerate}
 		\item \textbf{制备纳米级锐度的探针}\par
@@ -626,7 +616,6 @@
 	
 	\clearpage
 \section{自制 STM 的设计方案}
-%	\setParDis %设置段间距为 0
 	\subsection{基本组成}
 		\begin{figure}[htbp]
 			\centering 
@@ -1576,7 +1565,6 @@
 \section*{结论}
 \phantomsection{}
 \addcontentsline{toc}{section}{结论} % 将无标号章节添加至目录
-%	\setParDis %设置段间距为 0
 	\subsection{应用前景}
 		自制 STM 项目不仅可以在技术上验证低成本实现原子级分辨率成像的可行性，也能为纳米科学领域的研究和教育提供新的工具。通过自制 STM，研究人员能够更加方便地在实验室中探索物质表面的微观结构，这对于新材料的开发、表面科学的研究以及纳米技术的应用都具有重要意义。在教育领域，自制 STM 可以作为辅助教学工具，帮助学生直观理解量子力学和纳米技术的概念，激发他们对科学研究的兴趣。此外，借助自制 STM 的开放性，其为全球科学社区提供了一个共享知识和资源的途径，有助于推动全球范围内相关科学的合作与创新。
 	
@@ -1598,7 +1586,6 @@
 \newpage
 \phantomsection{}
 \section*{参考文献} % section*生成无标号章节题目
-%\setParDis %设置段间距为 0
 \addcontentsline{toc}{section}{参考文献} % 将无标号章节添加至目录
 \renewcommand{\section}[2]{}
 %\bibliography{FRB-ref}
