@@ -1,11 +1,14 @@
 % \special{dvipdfmx:config z 0} % 取消PDF压缩，加快速度但会极大增加文件体积，最终版本生成的时候最好把这句话注释掉
 % 文档可能需要多次编译以正确生成交叉引用和目录
-% 本文档以 第三十四届“冯如杯”格式规范编写，请根据当年届次要求自行修改。例如搜索替换 “三十四届”->“三十五届”；“创意赛道”->“主赛道”
+% 本文档以 第三十四届“冯如杯”格式规范编写，请根据当年届次和赛道要求自行修改。
+% 例如搜索替换 “三十四届”->“三十五届”；“创意赛道”->“主赛道”
 
 \documentclass{article}
 \usepackage{FRB-style}
 
+% 赛道届次宏定义，可以在此处修改，后面使用同一
 \def\Fengrubei{第三十四届“冯如杯”竞赛创意赛道}
+
 
 \begin{document}
 
@@ -18,7 +21,7 @@
 		\vskip 6pt
 		\xiaoer
 		\zhongsong
-		\Fengrubei
+		\Fengrubei{}
 	\end{center}
 	\vspace{12pt}
 	\begin{spacing}{3}
