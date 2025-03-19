@@ -17,11 +17,11 @@
 - **更新日期**：2025-03-19
 
 - **贡献者**：
-  
+
   - GFCYqw（3542510958@qq.com）
-  
+
 - **仓库内容**：
-  
+
   ```bash
   .
   ├─doc	# 官方文档（包含格式要求与竞赛通知）
@@ -30,11 +30,18 @@
   ├─FRB-main.docx	# 新模板导出样例（使用 Adobe Acrobat 转换为 Word，仅作为格式对照验证，文档内容有较大出入）
   └─FRB-main.pdf	# 新模板导出样例
   ```
-  
+
+- **仓库地址**：https://github.com/GFCYqw/Fengrubei_LaTeX_Template.git
+
+  ```bash
+  # 使用 git clone 克隆仓库到本地
+  git clone https://github.com/GFCYqw/Fengrubei_LaTeX_Template.git
+  ```
+
 - **日志**：
-  
+
   - 2024-04-07：github 项目创建（有点晚了）。
   - 2024-05-19：经过提醒，发现冯如杯（fengrubei）拼错了，少个g，已修正。
-  - 2025-03-11：由于模板目前尚未完成（咕咕），增加了基于[原模板](https://github.com/Hello-2073/The-Fengru-Cup-Template.git)的个人修改版本（作者以此版本获三十四届创意赛道一等奖），可供各位同学参考学习 LaTeX 的使用。
+  - 2025-03-11：由于模板目前尚未完成（咕咕），增加了基于 [原模板](https://github.com/Hello-2073/The-Fengru-Cup-Template.git) 的个人修改版本（作者以此版本获三十四届创意赛道一等奖），可供各位同学参考学习 LaTeX 的使用。
   - 2025-03-15：模板基本完成，重构文件结构。
   - 2025-03-19：修改行距设置，使其与 Word 文档 1.5 倍行距对齐；在宏包添加了部分注释，便于学习与修改；添加了几个往届的格式要求和官方通知文件。
