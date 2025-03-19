@@ -5,7 +5,7 @@
 \documentclass{article}
 \usepackage{FRB-style}
 
-\def\Fengru{第三十四届“冯如杯”竞赛创意赛道\\}
+\def\Fengrubei{第三十四届“冯如杯”竞赛创意赛道}
 
 \begin{document}
 
@@ -18,7 +18,7 @@
 		\vskip 6pt
 		\xiaoer
 		\zhongsong
-		第三十四届“冯如杯”竞赛创意赛道
+		\Fengrubei
 	\end{center}
 	\vspace{12pt}
 	\begin{spacing}{3}
@@ -115,6 +115,7 @@
 	\listoffigures%
 }
 
+% 根据情况决定是否换页
 %\clearpage
 % 表格目录
 {%
@@ -131,13 +132,14 @@
 %====================正文====================
 %\begin{spacing}{1.8}
 
-\renewcommand{\headrulewidth}{0.4pt} % 恢复页眉装饰线
-%\lhead{} 
-\chead{\xiaowu 北京航空航天大学第三十四届“冯如杯”竞赛创意赛道参赛作品} % 设置居中页眉
-
 \clearpage
 \pagenumbering{arabic} % 正文页码从1开始，用阿拉伯数字
 \setcounter{page}{1}
+\renewcommand{\headrulewidth}{0.4pt} % 恢复页眉装饰线
+%\lhead{} 
+\chead{\xiaowu 北京航空航天大学\Fengrubei{}参赛作品} % 设置居中页眉
+
+
 \section{引言}
 \subsection{显微镜技术的历史与发展}
 \subsubsection[光学显微镜]{光学显微镜}
