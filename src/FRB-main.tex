@@ -5,45 +5,51 @@
 \documentclass{article}
 \usepackage{FRB-style}
 
+\def\Fengru{第三十四届“冯如杯”竞赛创意赛道\\}
+
 \begin{document}
 
 %====================封面====================
-\def\Fengru{第三十四届“冯如杯”竞赛创意赛道\\}
-\leftline{\includegraphics[scale=1]{xiaohui.png}}
-\vspace{32pt}
-\begin{center}
-	\includegraphics[height=2.25cm, width=12.78cm, scale=1]{xiaoming.png}
-	\vskip 6pt
-	\xiaoer
-	\zhongsong
-	第三十四届“冯如杯”竞赛创意赛道
-\end{center}
-\vspace{12pt}
-\begin{spacing}{3}
+\begin{titlepage}
+	\leftline{\includegraphics[scale=1]{xiaohui.png}}
+	\vspace{32pt}
 	\begin{center}
-		%		\fontsize{22pt}{3}\selectfont
-		\erhao
+		\includegraphics[height=2.25cm, width=12.78cm, scale=1]{xiaoming.png}
+		\vskip 6pt
+		\xiaoer
 		\zhongsong
-		一种基于三维压电滑台的\\低成本自制扫描隧道显微镜设计方案
+		第三十四届“冯如杯”竞赛创意赛道
 	\end{center}
-	%    \rightline{\xinwei\sanhao{——副标题}} % 副标题三号华文新魏居右
-\end{spacing}
+	\vspace{12pt}
+	\begin{spacing}{3}
+		\begin{center}
+			%		\fontsize{22pt}{3}\selectfont
+			\erhao
+			\zhongsong
+			一种基于三维压电滑台的\\低成本自制扫描隧道显微镜设计方案
+		\end{center}
+		%    \rightline{\xinwei\sanhao{——副标题}} % 副标题三号华文新魏居右
+	\end{spacing}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% ！！！注意千万不能加作者学院等信息
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ！！！注意千万不能加作者学院等信息
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\pagenumbering{gobble} % 封面无页码
+% 已使用 titlepage 替换
+%\pagenumbering{gobble} % 封面无页码
 %\thispagestyle{empty}
 %====================封面====================
 
+
 %====================摘要====================
-\renewcommand{\headrulewidth}{0pt}	% 没有页眉装饰线
 \clearpage
-\pagenumbering{roman}	% 摘要目录页小写罗马
+\renewcommand{\headrulewidth}{0pt}	% 没有页眉装饰线
+\pagenumbering{roman}	% 摘要目录页页码小写罗马数字
 
 % \begin{spacing}{1.625}	% 对应 \end{spacing} 在参考文献结尾
-\xiaosi
+\xiaosi	% 全文字号控制
+
 
 \section*{摘要}
 \phantomsection{}
@@ -90,6 +96,7 @@
 \end{adjustwidth}
 %====================摘要====================
 
+
 %====================目录====================
 \phantomsection{}
 \clearpage
@@ -119,6 +126,7 @@
 }
 
 %====================目录====================
+
 
 %====================正文====================
 %\begin{spacing}{1.8}
