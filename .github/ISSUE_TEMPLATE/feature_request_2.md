@@ -7,14 +7,14 @@ assignees: ''
 
 ---
 
-**您的功能请求是否与某个问题相关？请描述**
-对问题所在的清晰而简洁的描述。例：每当……我总是很沮丧。
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
-**描述你想要的解决方案**
-清晰而简洁地描述你想要发生的事情。
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
 
-**描述你考虑过的其他选择**
-对您考虑过的任何替代解决方案或特性的清晰而简洁的描述。
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
 
-**其他内容**
-在这里添加有关功能请求的任何其他内容或截图。
+**Additional context**
+Add any other context or screenshots about the feature request here.
