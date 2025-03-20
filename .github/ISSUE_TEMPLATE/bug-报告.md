@@ -1,6 +1,6 @@
 ---
 name: Bug 报告
-about: Create a report to help us improve
+about: 出 Bug 了？告诉我们！
 title: ''
 labels: ''
 assignees: ''
