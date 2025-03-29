@@ -103,6 +103,17 @@
 	Path=fonts/
 	]{STKxinwei.ttf}	% 华文新魏
 \newcommand{\xinwei}{\CJKfamily{hwxw}}
+
+% \let\songti\relax	% 清除原定义
+% \newCJKfontfamily{\songti}[AutoFakeBold]{SimSun}	% 重定义 \songti 并开启伪粗体
+
+% 宋体伪粗体，使用方法 {\susong 文字文字}
+\newCJKfontfamily{\cusong}[AutoFakeBold={2.17}]{SimSun}
+
+% 在格式要求中，图表标题使用“粗宋体”，然而在 LaTeX 中使用 \textbf{}或\bfseries 会变为“黑体”
+% 临时解决方案为：使用 \caption{\cusong 图表标题}
+% 该方案有一个问题，只能修改标题部分，“图 1”仍然为黑体，后期可能会使用全局伪粗体或设置粗体字体解决
+% 不过使用默认黑体不算太大的问题，不管也可以
 % ====================字体====================
 
 
