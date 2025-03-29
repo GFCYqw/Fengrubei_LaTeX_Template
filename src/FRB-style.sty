@@ -51,8 +51,14 @@
 													% ruled：标题显示在上面；linesnumbered：显示行号；boxed：算法放入盒子。
 \RequirePackage{algpseudocode}	%伪代码注释
 \RequirePackage{tikz, pgfplots}
-\RequirePackage{gbt7714}	% 设置参考文献为 gbt-7714 格式
-\bibliographystyle{gbt7714-numerical}
+
+% 设置参考文献为 gbt-7714 格式
+% 感谢项目 https://github.com/zepinglee/gbt7714-bibtex-style
+% 为了便于参考，将该项目的 README.md 附于 INSTRIUCTIONS.md 后
+\RequirePackage{gbt7714}
+\bibliographystyle{gbt7714-numerical}	% 使用“顺序编码制”风格
+% \bibliographystyle{gbt7714-author-year}	% 使用“著者-出版年制”风格
+
 % ====================基本宏包====================
 
 

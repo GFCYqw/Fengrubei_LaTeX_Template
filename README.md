@@ -14,7 +14,7 @@
 
 - **目前版本**：2025 年，第 35 届
 
-- **更新日期**：2025-03-19
+- **更新日期**：2025-03-29
 
 - **贡献者**：
 
@@ -27,8 +27,8 @@
   ├─doc	# 官方文档（包含格式要求与竞赛通知）
   ├─old	# 包含作者在原模板以及基础上修改后论文源代码（旧）
   ├─src	# 最新模板源代码
-  ├─FRB-main.docx	# 新模板导出样例（使用 Adobe Acrobat 转换为 Word，仅作为格式对照验证，文档内容有较大出入）
-  └─FRB-main.pdf	# 新模板导出样例
+  ├─FRB-main.docx	# 模板导出样例（使用 Adobe Acrobat 转换为 Word，仅作为格式对照验证，文档内容有较大出入）
+  └─FRB-main.pdf	# 模板导出样例
   ```
 
 - **仓库地址**：https://github.com/GFCYqw/Fengrubei_LaTeX_Template.git
@@ -38,6 +38,13 @@
   git clone https://github.com/GFCYqw/Fengrubei_LaTeX_Template.git
   ```
 
+- **使用方法**：
+
+  ```bash
+  # 在 src\ 目录下打开 cmd 运行
+  .\make.bat
+  ```
+  
 - **日志**：
 
   - 2024-04-07：github 项目创建（有点晚了）。
@@ -45,3 +52,4 @@
   - 2025-03-11：由于模板目前尚未完成（咕咕），增加了基于 [原模板](https://github.com/Hello-2073/The-Fengru-Cup-Template.git) 的个人修改版本（作者以此版本获三十四届创意赛道一等奖），可供各位同学参考学习 LaTeX 的使用。
   - 2025-03-15：模板基本完成，重构文件结构。
   - 2025-03-19：修改行距设置，使其与 Word 文档 1.5 倍行距对齐；在宏包添加了部分注释，便于学习与修改；添加了几个往届的格式要求和官方通知文件。
+  - 2025-03-29：修改了 `make.bat` 脚本，添加使用说明；更新参考文献格式文件（感谢 [zepinglee/gbt7714-bibtex-style: GB/T 7714-2015 BibTeX Style](https://github.com/zepinglee/gbt7714-bibtex-style)），并将其 `README.md` 附于 `INSTRUCTION.md` 后供参考；

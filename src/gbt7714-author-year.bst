@@ -8,9 +8,9 @@
 %% -------------------------------------------------------------------
 %% GB/T 7714 BibTeX Style
 %% https://github.com/zepinglee/gbt7714-bibtex-style
-%% Version: 2022/03/21 v2.1.4
+%% Version: 2025/03/11 v2.1.7
 %% -------------------------------------------------------------------
-%% Copyright (C) 2016--2022 by Zeping Lee <zepinglee AT gmail.com>
+%% Copyright (C) 2016--2025 by Zeping Lee <zepinglee AT gmail.com>
 %% -------------------------------------------------------------------
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -39,6 +39,7 @@ INTEGERS {
   show.medium.type
   short.journal
   italic.journal
+  link.journal
   bold.journal.volume
   show.missing.address.publisher
   space.before.pages
@@ -83,6 +84,7 @@ FUNCTION {load.config}
   "slash" 'component.part.label :=
   #0 'short.journal :=
   #0 'italic.journal :=
+  #0 'link.journal :=
   #0 'bold.journal.volume :=
   #0 'show.missing.address.publisher :=
   #1 'space.before.pages :=
@@ -141,7 +143,7 @@ ENTRY
     year
   }
   { entry.lang entry.is.electronic is.pure.electronic entry.numbered }
-  { label extra.label sort.label short.label short.list entry.mark entry.url }
+  { label extra.label sort.label short.list entry.mark entry.url }
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block after.slash }
 
@@ -745,7 +747,7 @@ FUNCTION {editor.full}
 
 FUNCTION {make.full.names}
 { type$ "book" =
-  type$ "inbook" =
+  type$ "inbook" = booktitle empty$ not and
   or
     'author.editor.full
     { type$ "collection" =
@@ -887,7 +889,7 @@ FUNCTION {format.volume}
     { volume is.number
         { entry.lang lang.zh =
             { "第 " volume * " 卷" * }
-            { "volume" volume tie.or.space.connect }
+            { "Vol." volume tie.or.space.connect }
           if$
         }
         { volume }
@@ -902,7 +904,7 @@ FUNCTION {format.number}
     { number is.number
         { entry.lang lang.zh =
             { "第 " number * " 册" * }
-            { "number" number tie.or.space.connect }
+            { "No." number tie.or.space.connect }
           if$
         }
         { number }
@@ -1067,7 +1069,7 @@ FUNCTION {get.journal.title}
 }
 
 FUNCTION {check.arxiv.preprint}
-{ #1 #5 substring$ "l" change.case$ "arxiv" =
+{ #1 #5 substring$ purify$ "l" change.case$ "arxiv" =
     { #1 }
     { #0 }
   if$
@@ -1078,6 +1080,10 @@ FUNCTION {format.journal}
   duplicate$ empty$ not
     { italic.journal entry.lang lang.en = and
         'emphasize
+        'skip$
+      if$
+      link.journal
+        'add.link
         'skip$
       if$
     }
@@ -1308,10 +1314,13 @@ FUNCTION {extract.after.slash}
 
 FUNCTION {format.year}
 { year empty$ not
-    { year extract.before.slash extra.label * }
+    { year extra.label * }
     { date empty$ not
         { date extract.before.dash extra.label * }
-        { "empty year in " cite$ * warning$
+        { entry.is.electronic not
+            { "empty year in " cite$ * warning$ }
+            'skip$
+          if$
           urldate empty$ not
             { "[" urldate extract.before.dash * extra.label * "]" * }
             { "" }
@@ -1485,7 +1494,7 @@ FUNCTION {format.periodical.year.volume.number}
 
 FUNCTION {check.url}
 { url empty$ not
-    { "\url{" url * "}" * 'entry.url :=
+    { url 'entry.url :=
       #1 'entry.is.electronic :=
     }
     { howpublished empty$ not
@@ -1516,7 +1525,11 @@ FUNCTION {output.url}
 { show.url is.pure.electronic or
   entry.url empty$ not and
     { new.block
-      entry.url output
+      entry.url #1 #5 substring$ "\url{" =
+        { entry.url }
+        { "\url{" entry.url * "}" * }
+      if$
+      output
     }
     'skip$
   if$
@@ -1536,8 +1549,8 @@ FUNCTION {is.in.url}
     { entry.url empty$
         { #0 }
         { s text.length$ 'len :=
-          entry.url text.length$ 'charptr :=
-            { entry.url charptr len substring$ s = not
+          entry.url "l" change.case$ text.length$ 'charptr :=
+            { entry.url "l" change.case$ charptr len substring$ s "l" change.case$ = not
               charptr #0 >
               and
             }
@@ -1973,6 +1986,10 @@ FUNCTION {preprint}
   format.urldate "" output.after
   output.eprint
   output.url
+  show.preprint not eprint empty$ or
+    'output.doi
+    'skip$
+  if$
   new.block
   format.note output
   fin.entry
@@ -1989,10 +2006,10 @@ FUNCTION {misc}
     { pop$
       booktitle empty$ not
         'incollection
-        { publisher empty$ not
-            'monograph
-            { eprint empty$ not archivePrefix empty$ not or
-                'preprint
+        { eprint empty$ not archivePrefix empty$ not or
+            'preprint
+            { publisher empty$ not
+                'monograph
                 { entry.is.electronic
                     'electronic
                     {
@@ -2037,7 +2054,12 @@ FUNCTION {dataset}
   electronic
 }
 
-FUNCTION {inbook} { book }
+FUNCTION {inbook} {
+  booktitle empty$
+    'book
+    'incollection
+  if$
+}
 
 FUNCTION {inproceedings}
 { "C" set.entry.mark
@@ -2190,7 +2212,6 @@ FUNCTION {format.lab.name}
 
 FUNCTION {format.lab.names}
 { 's :=
-  s #1 format.lab.name 'short.label :=
   #1 'nameptr :=
   s num.names$ 'numnames :=
   ""
@@ -2276,9 +2297,8 @@ FUNCTION {editor.key.organization.label}
 }
 
 FUNCTION {calc.short.authors}
-{ "" 'short.label :=
-  type$ "book" =
-  type$ "inbook" =
+{ type$ "book" =
+  type$ "inbook" = booktitle empty$ not and
   or
     'author.editor.key.label
     { type$ "collection" =
@@ -2294,10 +2314,6 @@ FUNCTION {calc.short.authors}
     }
   if$
   'short.list :=
-  short.label empty$
-    { short.list 'short.label := }
-    'skip$
-  if$
 }
 
 FUNCTION {calc.label}
@@ -2319,16 +2335,6 @@ FUNCTION {calc.label}
   if$
   *
   'label :=
-  short.label
-  "("
-  *
-  format.year duplicate$ empty$
-  short.list key field.or.null = or
-     { pop$ "" }
-     'skip$
-  if$
-  *
-  'short.label :=
 }
 
 FUNCTION {sort.language.label}
@@ -2480,7 +2486,7 @@ FUNCTION {presort}
   "    "
   *
   type$ "book" =
-  type$ "inbook" =
+  type$ "inbook" = booktitle empty$ not and
   or
     'author.editor.sort
     { type$ "collection" =
@@ -2522,7 +2528,7 @@ FUNCTION {initialize.longest.label}
 
 FUNCTION {forward.pass}
 {
-  last.label short.label =
+  last.label label =
     { "" 'extra.label :=
       last.extra.label text.length$ 'charptr :=
         { last.extra.label charptr #1 substring$ "z" =
@@ -2544,7 +2550,7 @@ FUNCTION {forward.pass}
     }
     { "a" 'last.extra.label :=
       "" 'extra.label :=
-      short.label 'last.label :=
+      label 'last.label :=
     }
   if$
   number.label #1 + 'number.label :=
