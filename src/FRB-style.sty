@@ -200,7 +200,7 @@
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
-% Python 代码样式
+% listings 宏包代码样式
 \definecolor{dkgreen}{rgb}{0,0.6,0}	% 需要 xcolor
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -209,12 +209,13 @@
 	aboveskip		=	3mm,
 	belowskip		=	3mm,
 	showstringspaces=	false,
-	columns			=	flexible,
+	basewidth		=	0.6em,	% 基本字符宽度
+	columns			=	fixed,	% 固定字间距
 	numbers			=	left,	%设置行号位置none不显示行号
 	breakatwhitespace=	true,
 	escapeinside	=	``,		% 逃逸字符显示中文
 	tabsize			=	4,		% tab 空格数 4
-	extendedchars	=	false 	% 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+	extendedchars	=	false, 	% 解决代码跨页时，章节标题，页眉等汉字不显示的问题
 	breaklines		=	true,	% 自动换行
 	showspaces      =   false,  % 是否显示空格
 	captionpos      =   t      	% 代码标题位置 top
@@ -228,9 +229,26 @@
     keywordstyle    =   [2] \color{teal}\ttfamily,
     stringstyle     =   \color{mauve}\ttfamily,
     commentstyle    =   \color{dkgreen}\ttfamily,
-    breaklines      =   true,   % 自动换行
-    columns         =   fixed,  % 固定字间距
-    basewidth       =   0.5em
+	}
+
+\lstdefinestyle{C}{
+    language		=   C,
+    basicstyle      =   \zihao{5}\ttfamily,
+    numberstyle     =   \zihao{5}\color{gray}\ttfamily,
+    keywordstyle    =   \color{blue}\ttfamily,
+    keywordstyle    =   [2] \color{teal}\ttfamily,
+    stringstyle     =   \color{mauve}\ttfamily,
+    commentstyle    =   \color{dkgreen}\ttfamily,
+	}
+
+\lstdefinestyle{C++}{
+    language		=   C++,
+    basicstyle      =   \zihao{5}\ttfamily,
+    numberstyle     =   \zihao{5}\color{gray}\ttfamily,
+    keywordstyle    =   \color{blue}\ttfamily,
+    keywordstyle    =   [2] \color{teal}\ttfamily,
+    stringstyle     =   \color{mauve}\ttfamily,
+    commentstyle    =   \color{dkgreen}\ttfamily,
 	}
 
 % 防止伪代码与已有包冲突
