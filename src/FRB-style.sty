@@ -208,31 +208,22 @@
 	frame			=	tb,		% l(eft)+r(ight)+t(op)+b(ottom)代码框
 	aboveskip		=	3mm,
 	belowskip		=	3mm,
-	showstringspaces=	false,
+	showstringspaces =	false,
 	basewidth		=	0.6em,	% 基本字符宽度
 	columns			=	fixed,	% 固定字间距
-	numbers			=	left,	%设置行号位置none不显示行号
-	breakatwhitespace=	true,
+	numbers			=	left,	% 设置行号位置none不显示行号
+	breakatwhitespace =	false,	% 在空格处断行，不是很好看
 	escapeinside	=	``,		% 逃逸字符显示中文
 	tabsize			=	4,		% tab 空格数 4
 	extendedchars	=	false, 	% 解决代码跨页时，章节标题，页眉等汉字不显示的问题
 	breaklines		=	true,	% 自动换行
 	showspaces      =   false,  % 是否显示空格
 	captionpos      =   t      	% 代码标题位置 top
+	frame           =   single
 	}
 
 \lstdefinestyle{Python}{
     language		=   Python,
-    basicstyle      =   \zihao{5}\ttfamily,
-    numberstyle     =   \zihao{5}\color{gray}\ttfamily,
-    keywordstyle    =   \color{blue}\ttfamily,
-    keywordstyle    =   [2] \color{teal}\ttfamily,
-    stringstyle     =   \color{mauve}\ttfamily,
-    commentstyle    =   \color{dkgreen}\ttfamily,
-	}
-
-\lstdefinestyle{C}{
-    language		=   C,
     basicstyle      =   \zihao{5}\ttfamily,
     numberstyle     =   \zihao{5}\color{gray}\ttfamily,
     keywordstyle    =   \color{blue}\ttfamily,
@@ -269,7 +260,7 @@
 % 不加会出现警告：running in backwards compatibility mode (unsuitable tick labels;
 % missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
 \usetikzlibrary{patterns}
-\usetikzlibrary{graphs, positioning, quotes, shapes.geometric,shapes.misc}
+\usetikzlibrary{calc, graphs, positioning, quotes, shapes.geometric, shapes.misc}
 % ====================Tikz====================
 
 
