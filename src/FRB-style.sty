@@ -23,6 +23,7 @@
 % ====================基本宏包====================
 \RequirePackage[zihao=-4, scheme=chinese, heading=true]{ctex}
 \RequirePackage{xeCJK}
+\RequirePackage{enumerate}	% 提供项目序号自定义
 \RequirePackage{amssymb,amsmath}	% 数学符号
 \RequirePackage[bookmarks=true, colorlinks, allcolors=black]{hyperref} % 提供超链接，交叉引用和目录的跳转
 \RequirePackage{multicol}	% 分栏
@@ -224,6 +225,16 @@
 
 \lstdefinestyle{Python}{
     language		=   Python,
+    basicstyle      =   \zihao{5}\ttfamily,
+    numberstyle     =   \zihao{5}\color{gray}\ttfamily,
+    keywordstyle    =   \color{blue}\ttfamily,
+    keywordstyle    =   [2] \color{teal}\ttfamily,
+    stringstyle     =   \color{mauve}\ttfamily,
+    commentstyle    =   \color{dkgreen}\ttfamily,
+	}
+
+\lstdefinestyle{C}{
+    language		=   C,
     basicstyle      =   \zihao{5}\ttfamily,
     numberstyle     =   \zihao{5}\color{gray}\ttfamily,
     keywordstyle    =   \color{blue}\ttfamily,
