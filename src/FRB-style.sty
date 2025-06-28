@@ -21,7 +21,7 @@
 \ProcessOptions\relax
 
 % ====================基本宏包====================
-\RequirePackage[zihao=-4, scheme=chinese, heading=true]{ctex}
+% \RequirePackage[zihao=-4, scheme=chinese, heading=true]{ctexart}
 \RequirePackage{xeCJK}
 \RequirePackage{enumerate}	% 提供项目序号自定义
 \RequirePackage{amssymb,amsmath}	% 数学符号
@@ -153,18 +153,43 @@
 % titlesec 中文文档：https://static.latexstudio.net/wp-content/uploads/2016/12/titlesec_c.pdf
 % \titleformat{⟨command⟩}[⟨shape⟩]{⟨format⟩}{⟨label⟩}{⟨sep⟩}{⟨before-code⟩}[⟨after-code⟩]
 
-\titleformat{\section}[block]{\zihao{3}\heiti\centering}{第\chinese{section}章}{1em}{}[]	% "第一章 XXX"
-% \titleformat{\section}[block]{\zihao{3}\heiti\centering}{\chinese{section}、}{1em}{}[] 	% "一、 XXX"
-\titleformat{\subsection}[block]{\zihao{4}\heiti}{\arabic{section}.\arabic{subsection}}{1em}{}[]
-\titleformat{\subsubsection}[block]{\zihao{-4}\heiti}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1em}{}[]
+% \ctexset{
+% 	section = {
+% 		format={\centering\sffamily},
+% 		nameformat={\heiti\zihao{3}},
+% 		titleformat={\heiti \zihao {3}},
+% 		numberformat={\heiti \zihao {3}},
+% 		name={第, 章},number={\Roman{section}}
+% 	},
+% 	subsection = {
+% 		format={\flushleft\sffamily\heiti\zihao{-4}},
+% 		beforeskip={6pt},afterskip={6pt},
+% 	},   
+% 	subsubsection = {
+% 		format={\flushleft\sffamily\heiti\zihao{-4}},
+% 		beforeskip={0pt},afterskip={6pt},
+% 	}}
+
+\ctexset{section = {
+	name={第, 章},number={\chinese{section}}
+	}
+} % "1 引言" -> "第一章 引言"，且可以控制目录
+
+% CTEX 宏包中已有默认设置，此法无法控制目录使用相同格式
+% \titleformat{\section}[block]{\zihao{3}\heiti\centering}{第\chinese{section}章}{1em}{}[]	% "第一章 XXX"
+% % \titleformat{\section}[block]{\zihao{3}\heiti\centering}{\chinese{section}、}{1em}{}[] 	% "一、 XXX"
+% \titleformat{\subsection}[block]{\zihao{4}\heiti}{\arabic{section}.\arabic{subsection}}{1em}{}[]
+% \titleformat{\subsubsection}[block]{\zihao{-4}\heiti}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1em}{}[]
+
+% TODO: 尚未确定标题前后空行的计算方式
 
 % 标题前后空 0.5 行
 % \titlespacing{⟨command⟩}{⟨left⟩}{⟨beforesep⟩}{⟨aftersep⟩}[⟨right⟩]
 % 暂时没有确定计算方式，试出来的
 % 也可以全部设为 0pt 后用 \setParDis 来空 0.5 行
-\titlespacing{\section}{0pt}{25pt}{12pt}
-\titlespacing{\subsection}{0pt}{7pt}{7pt}
-\titlespacing{\subsubsection}{0pt}{5pt}{4pt}
+% \titlespacing{\section}{0pt}{25pt}{12pt}
+% \titlespacing{\subsection}{0pt}{7pt}{7pt}
+% \titlespacing{\subsubsection}{0pt}{5pt}{4pt}
 % ====================章节标题====================
 
 
@@ -176,11 +201,25 @@
 \renewcommand\listfigurename{插图目录}
 \renewcommand\listtablename{表格目录}
 
-% 目录加....引导符
+% % 修改目录样式：
+% % 示例：第一章 XXX...............1
+% \titlecontents{section}		% 标题级别
+% [1.6em]						% 标题位置 (左间距)
+% {\addvspace{2pt}\filright}	% 标题格式 (设置标题的整体格式，如字体尺寸、粗细、与上一个标题的垂直距离等，可空置)
+% {\contentspush{\thecontentslabel\hspace{0.8em}}}	% 标题标志 (设置标题标志的格式，如序号格式、序号宽度、序号与标题内容之间的间距等，不可空置)
+% {}			% 无序号标题 (设置无序号标题的格式，如字体、字体尺寸、位置等。可空置)
+% {\titlerule*[8pt]{.}\contentspage}					% 引导线与页码 (设置标题与页码之间的指引线样式以及页码的格式，该参数如果空置，标题将无引导线和页码)
+
+
 % 示例：第一章 XXX...............1
-\titlecontents{section}[1.6em]{\addvspace{2pt}\filright}
+\titlecontents{section}[1.6em]{\addvspace{2pt}\filright\heiti}
 {\contentspush{\thecontentslabel\hspace{0.8em}}}
 {}{\titlerule*[8pt]{.}\contentspage}
+
+% 这里如果不想要章级标题加粗使用
+% \titlecontents{section}[1.6em]{\addvspace{2pt}\filright}
+% {\contentspush{\thecontentslabel\hspace{0.8em}}}
+% {}{\titlerule*[8pt]{.}\contentspage}
 
 \titlecontents{subsection}[3.2em]{\addvspace{2pt}\filright}
 {\contentspush{\thecontentslabel\hspace{0.8em}}}
@@ -189,6 +228,7 @@
 \titlecontents{subsubsection}[6.4em]{\addvspace{2pt}\filright}
 {\contentspush{\thecontentslabel\hspace{0.8em}}}
 {}{\titlerule*[8pt]{.}\contentspage}
+
 % ====================目录====================
 
 
