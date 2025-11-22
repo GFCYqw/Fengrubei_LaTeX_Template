@@ -1,43 +1,41 @@
 # 说明
 
 - 主文档为 FRB-main.tex，使用 XeLaTeX 编译
-
 - 可以使用 make.bat 构建（Windows），使用方法：
-    ```bash
-    ================================================================
-    脚本名称：make.bat
-    功能：自动化编译 LaTeX 文档并清理辅助文件
-    使用方法：
-      （在 src\ 下打开 cmd 并输入如下命令）
-      .\make.bat           - 执行完整编译流程
-      .\make.bat clean     - 清理临时文件和PDF
-      .\make.bat distclean - 彻底清理（包括上级目录中的PDF）
-    ================================================================
-    ```
 
--   如果出现
-    `FRB-main.aux: 错误: 162: Package natbib Error: Bibliography not compatible with author-year citations. ...and\NAT@force@numbers{}\NAT@force@numbers`
-    请再编译一次即可（辅助文件未生成）
-    
--   可将各章节拆分至 chap/ 后 input 进主文档
+  ```bash
+  ================================================================
+  脚本名称：make.bat
+  功能：自动化编译 LaTeX 文档并清理辅助文件
+  使用方法：
+    （在 src\ 下打开 cmd 并输入如下命令）
+    .\make.bat           - 执行完整编译流程
+    .\make.bat clean     - 清理临时文件和PDF
+    .\make.bat distclean - 彻底清理（包括上级目录中的PDF）
+  ================================================================
+  ```
+- 如果出现
+  `FRB-main.aux: 错误: 162: Package natbib Error: Bibliography not compatible with author-year citations. ...and\NAT@force@numbers{}\NAT@force@numbers`
+  请再编译一次即可（辅助文件未生成）
+- 可将各章节拆分至 chap/ 后 input 进主文档
 
-    ```bash
-    # 推荐的文件结构
-    src
-    ├─code	# 代码
-    ├─fonts	# 字体
-    ├─img	# 插图
-    ├─FRB-main.tex	# 主文档
-    ├─FRB-style.sty	# 模板宏包
-    ├─FRB-ref.bib	# 参考文献库
-    ├─gbt7714.sty	# gbt-7714 参考文献格式
-    ├─gbt7714-author-year.bst
-    ├─gbt7714-numerical.bst
-    ├─make.bat	# 快速构建脚本
-    └─INSTRUCTIONS.md	# 本指南
-    ```
-
--   另附 [gbt7714-bibtex-style](https://github.com/zepinglee/gbt7714-bibtex-style) 项目的 `README.md` 内容于最后供参考
+  ```bash
+  # 推荐的文件结构
+  src
+  ├─code	# 代码
+  ├─fonts	# 字体
+  ├─img	# 插图
+  ├─FRB-main.tex	# 主文档
+  ├─FRB-style.cls	# 模板类
+  ├─FRB-style.sty	# 模板宏包
+  ├─FRB-ref.bib	# 参考文献库
+  ├─gbt7714.sty	# gbt-7714 参考文献格式
+  ├─gbt7714-author-year.bst
+  ├─gbt7714-numerical.bst
+  ├─make.bat	# 快速构建脚本
+  └─INSTRUCTIONS.md	# 本指南
+  ```
+- 另附 [gbt7714-bibtex-style](https://github.com/zepinglee/gbt7714-bibtex-style) 项目的 `README.md` 内容于最后供参考
 
 ---
 

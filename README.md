@@ -4,6 +4,7 @@
   <!-- <a title="英语" href="./README.en.md">🇺🇸</a> -->
   <!-- <a title="俄语" href="../ru/README.md">🇷🇺</a> -->
 </div>
+
 # (●'◡'●)
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![GitHub Release](https://img.shields.io/github/v/release/GFCYqw/Fengrubei_LaTeX_Template)](https://github.com/GFCYqw/Fengrubei_LaTeX_Template/releases/tag/v1.0.0) ![GitHub Release Date](https://img.shields.io/github/release-date/GFCYqw/Fengrubei_LaTeX_Template) ![GitHub last commit](https://img.shields.io/github/last-commit/GFCYqw/Fengrubei_LaTeX_Template) ![GitHub License](https://img.shields.io/github/license/GFCYqw/Fengrubei_LaTeX_Template)
@@ -50,14 +51,15 @@ git clone https://github.com/GFCYqw/Fengrubei_LaTeX_Template.git
 - 2025-03-15：模板基本完成，重构文件结构。
 - 2025-03-19：修改行距设置，使其与 Word 文档 1.5 倍行距对齐；在宏包添加了部分注释，便于学习与修改；添加了几个往届的格式要求和官方通知文件。
 - 2025-03-29：修改了 `make.bat` 脚本，添加使用说明；更新参考文献格式文件，并将相关项目 `README.md` 附于 `INSTRUCTION.md` 后供参考；定义伪粗体命令临时解决“图表标题使用粗宋体”。
-- 2025-03-30：规范了 `README.md`格式标准。
+- 2025-03-30：规范了 `README.md` 格式标准。
 - 2025-03-31：更换协议为LPPL。
+- 2025-11-23：通过 WSL2 环境编译测试，使用 Windows 下 SimSun 而非 Linux 下 FandolSong 字体；修正页眉高度；将原 `FRB-style.sty` 封装为 `FRB-style.cls` 类，使用 `\documentclass{FRB-style}` 即可；更新副录标题格式修改方法为 `ctex` 接口，简化使用并统一格式。
 
 ## 待办事项
 
-* 实现图表标题编号的粗宋体
-* 寻找可能的免费字体作为粗体字体
-* 规范原文标签命名格式
+* [X] 实现图表标题编号的粗宋体
+* [ ] 寻找可能的免费字体作为粗体字体
+* [X] 规范原文标签命名格式
 
 ## 维护人员
 
@@ -74,9 +76,9 @@ git clone https://github.com/GFCYqw/Fengrubei_LaTeX_Template.git
 
 贡献代码时请注意：
 
-* `git`提交请遵守[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
-* 版本化方式请遵守[Semantic Versioning 2.0.0](https://semver.org)规范
-* 如果修改 `README.md`，请遵守[standard-readme](https://github.com/RichardLitt/standard-readme)规范
+* `git`提交请遵守 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/)
+* 版本化方式请遵守 [Semantic Versioning 2.0.0](https://semver.org) 规范
+* 如果修改 `README.md`，请遵守 [standard-readme](https://github.com/RichardLitt/standard-readme) 规范
 
 ## 许可证
 

@@ -1,0 +1,340 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start of file `FRBTemplate.sty'.
+%% Copyright 2024 Martin Wilson @GFCYqw (3542510958@qq.com)
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%% https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008 or later.
+%% This work has the LPPL maintenance status `maintained'.
+%% The Current Maintainer of this work is Martin Wilson.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% !Mode:: "TeX:UTF-8"
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{FRB-style}[2025/11/23 FengruBei LaTeX Template v1.0.3]
+\LoadClass[zihao=-4, scheme=chinese, heading=true, fontset=windows]{ctexart}
+% \ProvidesPackage{FRB-style}[2025/03/31 v2.0 LaTeX Template for FRB]
+
+\ProcessOptions\relax
+
+% ====================基本宏包====================
+% \RequirePackage[zihao=-4, scheme=chinese, heading=true]{ctexart}
+\RequirePackage{xeCJK}
+\RequirePackage{enumerate}	% 提供项目序号自定义
+\RequirePackage{amssymb,amsmath}	% 数学符号
+\RequirePackage[bookmarks=true, colorlinks, allcolors=black]{hyperref} % 提供超链接，交叉引用和目录的跳转
+\RequirePackage{multicol}	% 分栏
+\RequirePackage[dvipsnames]{xcolor} % 颜色
+\RequirePackage{color}				% 颜色
+\RequirePackage{geometry}	% 页面设置
+\RequirePackage{setspace}	% 设置行间距
+\RequirePackage{changepage}	% 左右缩进
+\RequirePackage{fancyhdr} 	% 页眉页脚
+\RequirePackage{fontspec}	% 字体
+\RequirePackage{float}		% 浮动体支持 [H]
+\RequirePackage{graphicx}	% 插入图片
+\RequirePackage{caption}	% 图表标题
+\RequirePackage{subcaption}	% 子图标题
+\RequirePackage{multirow}	% 单元格合并
+\RequirePackage{booktabs}	% 三线表
+\RequirePackage{titlesec}	% 标题设置
+\RequirePackage{titletoc} 	% 目录设置
+\RequirePackage[title]{appendix}	% 附录
+\RequirePackage{times}
+% \usepackage[normalem]{ulem}	% 下划线
+% \useunder{\uline}{\ul}{}
+\RequirePackage{soul}	% 内容强调：so（字母间隔）, caps（全大写）, ul（下划线）, hl（高亮）, st（删除线）
+% 可设置 ul，hl，st 颜色：setulcolor{}, sethlcolor{}以及setstcolor{}
+\RequirePackage{listings}	% 插入代码
+\RequirePackage[ruled,linesnumbered]{algorithm2e}	% 伪代码
+% ruled：标题显示在上面；linesnumbered：显示行号；boxed：算法放入盒子。
+\RequirePackage{algpseudocode}	%伪代码注释
+\RequirePackage{tikz, pgfplots}
+
+% 设置参考文献为 gbt-7714 格式
+% 感谢项目 https://github.com/zepinglee/gbt7714-bibtex-style
+% 为了便于参考，将该项目的 README.md 附于 INSTRIUCTIONS.md 后
+\RequirePackage{gbt7714}
+\bibliographystyle{gbt7714-numerical}	% 使用“顺序编码制”风格
+% \bibliographystyle{gbt7714-author-year}	% 使用“著者-出版年制”风格
+
+% ====================基本宏包====================
+
+
+% ====================页面格式====================
+% 页面尺寸与页边距
+\geometry{a4paper}
+\geometry{left=3cm,right=2cm,top=2.5cm,bottom=2.5cm}
+
+% 行距
+% 在 LaTeX 中，默认的行距是字体字号的 1.2 倍，而在最新的 Word 文档中，默认的行距是 1.3 倍，因此在 Word 中选用 1.5 倍行距时应在 LaTeX 中设置 \linespread{1.625}。
+\linespread{1.625}		% 1.625 = 1.5*1.3/1.2 
+
+% 段落间距
+\setlength{\parskip}{0pt}	% 默认段落间距设置为 0
+\newcommand{\setParDis}{\setlength{\parskip}{0.5\baselineskip}}		% 使用 \setParDis 将后面段落设为空 0.5 行
+\newcommand{\setParDef}{\setlength{\parskip}{0pt}}					% 使用 \setParDef 将后面段落设为默认间距
+
+% 页眉页脚
+\pagestyle{fancy}
+\setlength{\headwidth}{\textwidth}	% 页眉长度适应文本
+\lhead{}	% 清除左页眉
+\rhead{}    % 清除右页眉
+\cfoot{\zihao{5}\thepage}	% 设置页码为五号
+\setlength{\headheight}{14.45398pt}
+\addtolength{\topmargin}{-2.45398pt}
+% ====================页面格式====================
+
+
+% ====================字体====================
+\setmainfont[
+	Path			= fonts/,
+	BoldFont 		= times-new-roman-bold.ttf,
+	ItalicFont 		= times-new-roman-italic.ttf,
+	BoldItalicFont 	= times-new-roman-bold-italic.ttf
+]{times-new-roman.ttf}	% 西文字体 Times New Roman
+\setmonofont[
+	Path=fonts/
+]{Courier New.ttf}	% 等宽字体 Courier New
+\setCJKfamilyfont{hwzs}[
+	Path=fonts/
+]{STKzhongsong.ttf}	% 华文中宋
+\newcommand{\zhongsong}{\CJKfamily{hwzs}}
+\setCJKfamilyfont{hwxw}[
+	Path=fonts/
+]{STKxinwei.ttf}	% 华文新魏
+\newcommand{\xinwei}{\CJKfamily{hwxw}}
+
+% \let\songti\relax	% 清除原定义
+% \newCJKfontfamily{\songti}[AutoFakeBold]{SimSun}	% 重定义 \songti 并开启伪粗体
+
+% 宋体伪粗体，使用方法 {\susong 文字文字}
+\newCJKfontfamily{\cusong}[AutoFakeBold={2.17}]{SimSun}
+
+% 在格式要求中，图表标题使用“粗宋体”，然而在 LaTeX 中使用 \textbf{}或\bfseries 会变为“黑体”
+% 临时解决方案为：使用 \caption{\cusong 图表标题}
+% 该方案有一个问题，只能修改标题部分，“图 1”仍然为黑体，后期可能会使用全局伪粗体或设置粗体字体解决
+% 不过使用默认黑体不算太大的问题，不管也可以
+% ====================字体====================
+
+
+% ====================定义字号命令====================
+% 也可以使用\zihao{-5}等命令设置字号
+% 这里为了便于初学者理解使用拼音定义了字号命令作为对照
+%\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}	% 可以同时更改字体大小及行距
+\newcommand{\chuhao	}{\fontsize{42pt}{0}}	% 初号
+\newcommand{\xiaochu}{\fontsize{36pt}{0}}	% 小初
+\newcommand{\yihao	}{\fontsize{26pt}{0}}	% 一号
+\newcommand{\xiaoyi	}{\fontsize{24pt}{0}}	% 小一
+\newcommand{\erhao	}{\fontsize{22pt}{0}}	% 二号
+\newcommand{\xiaoer	}{\fontsize{18pt}{0}}	% 小二
+\newcommand{\sanhao	}{\fontsize{16pt}{0}}	% 三号
+\newcommand{\xiaosan}{\fontsize{15pt}{0}}	% 小三
+\newcommand{\sihao	}{\fontsize{14pt}{0}}	% 四号
+\newcommand{\xiaosi	}{\fontsize{12pt}{0}}	% 小四
+\newcommand{\wuhao	}{\fontsize{10.5pt}{0}}	% 五号
+\newcommand{\xiaowu	}{\fontsize{9pt}{0}}	% 小五
+\newcommand{\liuhao	}{\fontsize{7.5pt}{0}}	% 六号
+\newcommand{\xiaoliu}{\fontsize{6.5pt}{0}}	% 小六
+\newcommand{\qihao	}{\fontsize{5.5pt}{0}}	% 七号
+\newcommand{\bahao	}{\fontsize{5pt}{0}}	% 八号
+% ====================定义字号命令====================
+
+
+% ====================图表标题====================
+% \usepackage[zihao=-4]{ctex} 下 small 对应 5 号
+\DeclareCaptionLabelSeparator{mysep}{\space\space}  	% 自定义caption格式
+\captionsetup[figure]{font={small}, labelfont=bf, labelsep=mysep, textfont={bf}}	% 图片caption格式
+\captionsetup[table]{font={small}, labelfont=bf, labelsep=mysep, textfont={bf}}		% 表格caption格式
+% ====================图表标题====================
+
+
+% ====================章节标题====================
+% titlesec 中文文档：https://static.latexstudio.net/wp-content/uploads/2016/12/titlesec_c.pdf
+% \titleformat{⟨command⟩}[⟨shape⟩]{⟨format⟩}{⟨label⟩}{⟨sep⟩}{⟨before-code⟩}[⟨after-code⟩]
+
+% \ctexset{
+% 	section = {
+% 		format={\centering\sffamily},
+% 		nameformat={\heiti\zihao{3}},
+% 		titleformat={\heiti \zihao {3}},
+% 		numberformat={\heiti \zihao {3}},
+% 		name={第, 章},number={\Roman{section}}
+% 	},
+% 	subsection = {
+% 		format={\flushleft\sffamily\heiti\zihao{-4}},
+% 		beforeskip={6pt},afterskip={6pt},
+% 	},   
+% 	subsubsection = {
+% 		format={\flushleft\sffamily\heiti\zihao{-4}},
+% 		beforeskip={0pt},afterskip={6pt},
+% 	}}
+
+\ctexset{section = {
+			name={第, 章},number={\chinese{section}}
+		},
+		appendix = {
+			name={附录}
+		},
+} % "1 引言" -> "第一章 引言"，且可以控制目录
+
+% CTEX 宏包中已有默认设置，此法无法控制目录使用相同格式
+% \titleformat{\section}[block]{\zihao{3}\heiti\centering}{第\chinese{section}章}{1em}{}[]	% "第一章 XXX"
+% % \titleformat{\section}[block]{\zihao{3}\heiti\centering}{\chinese{section}、}{1em}{}[] 	% "一、 XXX"
+% \titleformat{\subsection}[block]{\zihao{4}\heiti}{\arabic{section}.\arabic{subsection}}{1em}{}[]
+% \titleformat{\subsubsection}[block]{\zihao{-4}\heiti}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1em}{}[]
+
+% TODO: 尚未确定标题前后空行的计算方式
+
+% 标题前后空 0.5 行
+% \titlespacing{⟨command⟩}{⟨left⟩}{⟨beforesep⟩}{⟨aftersep⟩}[⟨right⟩]
+% 暂时没有确定计算方式，试出来的
+% 也可以全部设为 0pt 后用 \setParDis 来空 0.5 行
+% \titlespacing{\section}{0pt}{25pt}{12pt}
+% \titlespacing{\subsection}{0pt}{7pt}{7pt}
+% \titlespacing{\subsubsection}{0pt}{5pt}{4pt}
+% ====================章节标题====================
+
+
+% ====================目录====================
+\setcounter{secnumdepth}{3}	% 编号深度
+\setcounter{tocdepth}{3}	% 目录深度
+
+% 图表目录标题汉化
+\renewcommand\listfigurename{插图目录}
+\renewcommand\listtablename{表格目录}
+
+% % 修改目录样式：
+% % 示例：第一章 XXX...............1
+% \titlecontents{section}		% 标题级别
+% [1.6em]						% 标题位置 (左间距)
+% {\addvspace{2pt}\filright}	% 标题格式 (设置标题的整体格式，如字体尺寸、粗细、与上一个标题的垂直距离等，可空置)
+% {\contentspush{\thecontentslabel\hspace{0.8em}}}	% 标题标志 (设置标题标志的格式，如序号格式、序号宽度、序号与标题内容之间的间距等，不可空置)
+% {}			% 无序号标题 (设置无序号标题的格式，如字体、字体尺寸、位置等。可空置)
+% {\titlerule*[8pt]{.}\contentspage}					% 引导线与页码 (设置标题与页码之间的指引线样式以及页码的格式，该参数如果空置，标题将无引导线和页码)
+
+
+% 示例：第一章 XXX...............1
+\titlecontents{section}[1.6em]{\addvspace{2pt}\filright\heiti}
+{\contentspush{\thecontentslabel\hspace{0.8em}}}
+{}{\titlerule*[8pt]{.}\contentspage}
+
+% 这里如果不想要章级标题加粗使用
+% \titlecontents{section}[1.6em]{\addvspace{2pt}\filright}
+% {\contentspush{\thecontentslabel\hspace{0.8em}}}
+% {}{\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsection}[3.2em]{\addvspace{2pt}\filright}
+{\contentspush{\thecontentslabel\hspace{0.8em}}}
+{}{\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsubsection}[6.4em]{\addvspace{2pt}\filright}
+{\contentspush{\thecontentslabel\hspace{0.8em}}}
+{}{\titlerule*[8pt]{.}\contentspage}
+
+% ====================目录====================
+
+
+% ====================代码块样式====================
+% 代码块标题
+\renewcommand{\lstlistlistingname}{代码汇总}
+\renewcommand{\lstlistingname}{代码}
+\renewcommand{\algorithmcfname}{算法}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+% listings 宏包代码样式
+\definecolor{dkgreen}{rgb}{0,0.6,0}	% 需要 xcolor
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+	frame			=	tb,		% l(eft)+r(ight)+t(op)+b(ottom)代码框
+	aboveskip		=	3mm,
+	belowskip		=	3mm,
+	showstringspaces =	false,
+	basewidth		=	0.6em,	% 基本字符宽度
+	columns			=	fixed,	% 固定字间距
+	numbers			=	left,	% 设置行号位置none不显示行号
+	breakatwhitespace =	false,	% 在空格处断行，不是很好看
+	escapeinside	=	``,		% 逃逸字符显示中文
+	tabsize			=	4,		% tab 空格数 4
+	extendedchars	=	false, 	% 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+	breaklines		=	true,	% 自动换行
+	showspaces      =   false,  % 是否显示空格
+	captionpos      =   t      	% 代码标题位置 top
+	frame           =   single
+}
+
+\lstdefinestyle{Python}{
+	language		=   Python,
+	basicstyle      =   \zihao{5}\ttfamily,
+	numberstyle     =   \zihao{5}\color{gray}\ttfamily,
+	keywordstyle    =   \color{blue}\ttfamily,
+	keywordstyle    =   [2] \color{teal}\ttfamily,
+	stringstyle     =   \color{mauve}\ttfamily,
+	commentstyle    =   \color{dkgreen}\ttfamily,
+}
+
+\lstdefinestyle{C}{
+	language		=   C,
+	basicstyle      =   \zihao{5}\ttfamily,
+	numberstyle     =   \zihao{5}\color{gray}\ttfamily,
+	keywordstyle    =   \color{blue}\ttfamily,
+	keywordstyle    =   [2] \color{teal}\ttfamily,
+	stringstyle     =   \color{mauve}\ttfamily,
+	commentstyle    =   \color{dkgreen}\ttfamily,
+}
+
+\lstdefinestyle{C++}{
+	language		=   C++,
+	basicstyle      =   \zihao{5}\ttfamily,
+	numberstyle     =   \zihao{5}\color{gray}\ttfamily,
+	keywordstyle    =   \color{blue}\ttfamily,
+	keywordstyle    =   [2] \color{teal}\ttfamily,
+	stringstyle     =   \color{mauve}\ttfamily,
+	commentstyle    =   \color{dkgreen}\ttfamily,
+}
+
+% 防止伪代码与已有包冲突
+\makeatletter
+\newif\if@restonecol
+\makeatother
+\let\algorithm\relax
+\let\endalgorithm\relax
+
+% 定义 Do-While
+\SetKwRepeat{Do}{do}{while}
+% 调用方式 \Do{<结束条件>}{<执行命令>}
+% ====================代码块样式====================
+
+
+% ====================Tikz====================
+\pgfplotsset{compat=1.7}
+% 不加会出现警告：running in backwards compatibility mode (unsuitable tick labels;
+% missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
+\usetikzlibrary{patterns}
+\usetikzlibrary{calc, graphs, positioning, quotes, shapes.geometric, shapes.misc}
+% ====================Tikz====================
+
+
+% ====================其他====================
+% 插入图片路径，将会自动搜索所列文件夹
+\graphicspath{
+	{fig/}
+		{img/}
+		{figures/}
+		{images/}
+}
+
+% \providecommand\phantomsection{}
+
+\endinput
+
+% 2024/4/7
+% 北航人苦论文格式久矣，苦不见拉泰赫模板久矣。吾立志撰拉泰赫宏，不苦他人，当苦自己。望该包广而传之，用而赞之，吾无悔矣！
